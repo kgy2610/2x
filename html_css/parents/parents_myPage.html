@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>parents_menubar</title>
+   <link rel="stylesheet" href="./parents_myPage.css">
+</head>
+
+<body>
+   <!--배너-->
+   <div class="nav">
+      <img src="./img/logo.png" alt="">
+      <div class="menu">
+         <label for="mypage"><a href="#">마이페이지</a></label>
+         <label for="score"><a href="#">성적</a></label>
+         <label for="advice"><a href="#">상담신청</a></label>
+         <label for="community"><a href="#">커뮤니티</a></label>
+         <label for="photo"><a href="#">행사사진</a></label>
+      </div>
+      <div class="undermenu">
+         <label for="info" onclick="openUpdateModal()"><a href="#">정보수정</a></label>
+         <label for="logout"><a href="#">로그아웃</a></label>
+      </div>
+   </div>
+
+   <!--마이페이지-->
+   <div class="wrap">
+      <!--왼쪽전체-->
+      <div class=".contents-left">
+         <div class="mypage">
+            <p>4학년 2반 김가영</p>
+            <p>담임선생님 : 김가영</p>
+            <p>선생님 연락처 : 010-0000-0000</p>
+
+            <div class="present">
+               <div>
+                  <p>출석률</p>
+                  <p>100%</p>
+               </div>
+               <div>
+                  <p>현재 출석 상태</p>
+                  <p>결석</p>
+               </div>
+            </div>
+         </div>
+
+
+
+         <div class="notice">
+            <p>공지사항</p>
+            <hr>
+            <table>
+               <tr data-full-text="교내 안전 지침은 모든 학생과 교직원이 안전하고 건강한 학교 환경에서 교육을 받을 수 있도록 하기 위해 제정되었습니다. 본 지침은 학교 내에서의 안전한 행동을 규정하며, 불법행위나 위험한 행동을 예방하는 데 중점을 두고 있습니다. 모든 학생은 교내 안전 수칙을 숙지하고 이를 준수해야 하며, 위반 시에는 학교의 징계 조치가 있을 수 있습니다. 또한, 긴급 상황 발생 시 즉각적인 대응 방안을 숙지해야 하며, 각 학급에서는 정기적으로 안전 교육을 실시하여 위험 요소를 사전에 인지하고 예방할 수 있도록 해야 합니다. 학교 내 모든 구성원은 서로 협력하여 안전한 교육 환경을 만들어 가는 것이 중요합니다."
+                  data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내안내가길다면 제한하기</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="20글자 이상의 공지사항입니다아ㅏ아앙아아아아아아아에 대한 자세한 내용입니다." data-date="2024-10-20"
+                  onclick="openModal(this)">
+                  <td class="text-limit">20글자 이상의 공지사항입니다아ㅏ아앙아아아아아아아</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+               <tr data-full-text="교내 안전 지침 안내에 대한 자세한 내용입니다." data-date="2024-10-20" onclick="openModal(this)">
+                  <td class="text-limit">교내 안전 지침 안내</td>
+                  <td>2024-10-20</td>
+               </tr>
+            </table>
+         </div>
+
+      </div>
+
+      <!--오른쪽 전체-->
+      <div class="contents-right">
+         <div class="food">
+            <p>오늘의 급식</p>
+            <p>자장면*메추리알 </p>
+            <p>미니밥</p>
+            <p>계란실파국</p>
+            <p>반달단무지</p>
+            <p>찹쌀탕수육*후르츠소스</p>
+            <p>배추김치</p>
+            <p>방울토마토</p>
+         </div>
+         <div class="food">
+            <p>오늘의 급식</p>
+            <p>자장면*메추리알 </p>
+            <p>미니밥</p>
+            <p>계란실파국</p>
+            <p>반달단무지</p>
+            <p>찹쌀탕수육*후르츠소스</p>
+            <p>배추김치</p>
+            <p>방울토마토</p>
+         </div>
+      </div>
+   </div>
+
+   <!-- 공지사항 모달 -->
+   <div id="noticeModal" class="modal">
+      <div class="modal-content">
+         <span class="close" onclick="closeModal()">&times;</span>
+         <p id="modalContent"></p>
+         <p id="modalDate"></p>
+      </div>
+   </div>
+
+   <!-- 정보수정 모달 -->
+   <div id="updateModal" class="modal2">
+      <div class="modal-content2">
+         <h2 id="modalTitle">정보 수정</h2>
+         <span class="close" onclick="closeUpdateModal()">&times;</span>
+         <div id="modalForm">
+            <!-- 기본 정보 수정 폼 -->
+            <form id="infoForm">
+               <table>
+                  <tr>
+                     <td>닉네임</td>
+                     <td><input type="text" placeholder="닉네임"></td>
+                  </tr>
+                  <tr>
+                     <td>전화번호</td>
+                     <td><input type="text" placeholder="전화번호"></td>
+                  </tr>
+               </table>
+               <button type="button">수정하기</button>
+               <button type="button" onclick="switchToPwdForm()">비밀번호 수정</button>
+            </form>
+            <!-- 비밀번호 수정 폼 (기본적으로 숨김) -->
+            <form id="pwdForm" style="display: none;">
+               <table>
+                  <tr>
+                     <td>기존 비밀번호</td>
+                     <td><input type="password" placeholder="기존 비밀번호를 입력하세요"></td>
+                  </tr>
+                  <tr>
+                     <td>수정 비밀번호</td>
+                     <td><input type="password" placeholder="수정할 비밀번호를 입력하세요"></td>
+                  </tr>
+                  <tr>
+                     <td>비밀번호 확인</td>
+                     <td><input type="password"></td>
+                  </tr>
+               </table>
+               <button type="button">비밀번호 수정하기</button>
+               <button type="button" onclick="switchToInfoForm()">뒤로가기</button>
+            </form>
+         </div>
+      </div>
+   </div>
+   <script>
+
+      //공지사항 댓글 수 제한(20글자)
+      document.querySelectorAll(".text-limit").forEach(function (element) {
+         const text = element.innerText;
+         if (text.length > 20) {
+            element.innerText = text.substring(0, 20) + "  ...";
+         }
+      });
+
+      // 공지사항 모달
+      function openModal(element) {
+         var fullText = element.getAttribute('data-full-text');
+         var date = element.getAttribute('data-date');
+
+         document.getElementById('modalContent').textContent = fullText;
+         document.getElementById('modalDate').textContent = date;
+
+         document.getElementById('noticeModal').style.display = 'block';
+      }
+
+      function closeModal() {
+         document.getElementById('noticeModal').style.display = 'none';
+      }
+
+
+      // 모달 열기 및 닫기 함수
+      function openUpdateModal() {
+         document.getElementById('updateModal').style.display = 'flex';
+      }
+
+      function closeUpdateModal() {
+         document.getElementById('updateModal').style.display = 'none';
+      }
+
+      // 정보 수정 폼에서 비밀번호 수정 폼으로 전환
+      function switchToPwdForm() {
+         document.getElementById('infoForm').style.display = 'none';
+         document.getElementById('pwdForm').style.display = 'block';
+         document.getElementById('modalTitle').textContent = "비밀번호 수정";
+      }
+
+      // 비밀번호 수정 폼에서 정보 수정 폼으로 전환
+      function switchToInfoForm() {
+         document.getElementById('pwdForm').style.display = 'none';
+         document.getElementById('infoForm').style.display = 'block';
+         document.getElementById('modalTitle').textContent = "정보 수정";
+      }
+
+      // 외부 클릭 시 모달 닫기
+      window.onclick = function (event) {
+         const noticeModal = document.getElementById('noticeModal');
+         const updateModal = document.getElementById('updateModal');
+
+         // 공지사항 모달 외부 클릭 시 닫기
+         if (event.target === noticeModal) {
+            closeModal();
+         }
+
+         // 정보 수정 모달 외부 클릭 시 닫기
+         if (event.target === updateModal) {
+            closeUpdateModal();
+         }
+      };
+   </script>
+</body>
+
+</html>
