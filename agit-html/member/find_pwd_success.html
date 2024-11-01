@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디/비밀번호 찾기</title>
+    <link rel="stylesheet" href="./css/find_success.css">
+    <link rel="stylesheet" href="./css/find_id-pwd.css">
+</head>
+<body>
+    <div id="find-box">
+        <div id="find-info">
+            <div id="find-logo">
+                <img src="../common/img/logo.png">
+            </div>
+            <div id="find-memo">
+                아이디 / 비밀번호 찾기
+            </div>
+        </div>
+        <div class="tab_content">
+            <input type="radio" name="findInfo" id="findId" checked>
+            <label for="findId">아이디 찾기</label>
+        
+            <input type="radio" name="findInfo" id="findPwd">
+            <label for="findPwd">비밀번호 찾기</label>
+        
+            <div class="conbox con1">
+                <form action="" id="findId-form">
+                    <div id="findId-name">
+                        <p>이름</p>
+                        <input type="text" placeholder="이름을 입력하세요">
+                    </div>
+                    <div id="findId-phone">
+                        <p>전화번호</p>
+                        <input type="text" placeholder="(-)제외하고 입력 ex)01011112222">
+                    </div>
+                    <div id="findId-btn">
+                        <input type="button" value="아이디 찾기">
+                    </div>
+                </form>
+            </div>
+            <div class="conbox con2">
+                <form action="" id="findPwd-success-form">
+                    <div id="new-pwd">
+                        <p>새 비밀번호</p>
+                        <input type="text" placeholder="새 비밀번호를 입력하세요">
+                    </div>
+                    <div id="check-pwd">
+                        <p>비밀번호 확인</p>
+                        <input type="text">
+                    </div>
+                    <div id="rePwd-btn">
+                        <input type="button" value="비밀번호 수정">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

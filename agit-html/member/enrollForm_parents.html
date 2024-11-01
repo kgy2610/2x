@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부모님 회원가입</title>
     <link rel="stylesheet" href="./css/enrollForm.css">
+    <link rel="stylesheet" href="./css/enrollForm_parents-modal.css">
 </head>
 <body>
     <div id="enrollForm-box">
@@ -28,7 +29,7 @@
                 <div id="enroll-id">
                     <p>아이디</p>
                     <input type="text" placeholder="자녀아이디 입력" autofocus>
-                    <input type="button" value="중복확인">
+                    <input type="button" value="자녀아이디 검색" onclick="openChildIdModal()">
                 </div>
                 <div id="enroll-pwd">
                     <p id="enroll-pwd-p">비밀번호</p>
@@ -62,5 +63,61 @@
             </form>
         </div>
     </div>
+
+    <!-- 모달 -->
+    <div id="noticeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="kid-search">
+                <div id="kid-info">
+                    <div id="kid-name">
+                        <p>자녀 이름</p>
+                        <input type="text">
+                    </div>
+                    <div id="kid-phone">
+                        <p>전화번호</p>
+                        <input type="text" placeholder="(-)제외한 자녀 전화번호 입력">
+                    </div>
+                </div>
+                <div id="kidSearch-btn">
+                    <input type="button" value="검 색">
+                </div>
+            </div>
+            <div id="kid-list">
+                <table border="1px">
+                    <tr>
+                        <th>자녀 이름</th>
+                        <th>반 / 번호</th>
+                        <th>아이디 선택</th>
+                    </tr>
+                    <tr>
+                        <td>신서희</td>
+                        <td>매화반</td>
+                        <td>tjgml1210</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 자녀 아이디 검색 모달 열기
+        function openChildIdModal() {
+            document.getElementById('noticeModal').style.display = 'block';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('noticeModal').style.display = 'none';
+        }
+
+        // 모달 밖 클릭 시 닫기
+        window.onclick = function(event) {
+            var modal = document.getElementById('noticeModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
