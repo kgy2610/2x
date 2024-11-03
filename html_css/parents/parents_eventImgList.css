@@ -92,8 +92,7 @@ a{
    padding: 10px;
    display: flex;
    flex-wrap: wrap; /* 한 줄에 요소가 꽉 차면 다음 줄로 넘어가게 설정 */
-   justify-content: flex-start; /* 왼쪽 정렬 */
-   gap: 30px; /* 요소 간의 간격 */
+
 }
 
 
