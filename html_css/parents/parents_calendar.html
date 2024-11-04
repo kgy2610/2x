@@ -26,10 +26,13 @@
     </div>
 
     <div class="wrap">
-        <div style="font-size: 2em; color: green; text-align: center">
-            2024년
-            <select id="monthSelect"></select>월
+        <div class="header">
+            <div>
+                2024년
+                <select id="monthSelect"></select>월
+            </div>
         </div>
+        
         <br />
 
         <table align="center" width="500" style="text-align: center" id="calendar">
@@ -53,12 +56,26 @@
     <!-- 모달 -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeBtn">&times;</span>
-            날짜 : <input type="text" id="date" readonly /> <br />
-            학부모 이름 : <input type="text" id="parentName" /> <br />
-            자녀 이름 : <input type="text" id="childName" /> <br />
-            상담 내용 : <input type="text" id="adviceContent" /> <br />
-            <button type="button" id="saveBtn">저장</button>
+            <form action="">
+                <span class="close" id="closeBtn">&times;</span>
+                <table>
+                    <tr>
+                        <td>학부모 이름</td>
+                        <td><input type="text" id="parentName" /></td>
+                    </tr>
+                    <tr>
+                        <td>자녀 이름</td>
+                        <td><input type="text" id="childName" /></td>
+                    </tr>
+                    <tr>
+                        <td>상담 내용</td>
+                        <td> <input type="text" id="adviceContent" /></td>
+                    </tr>
+                </table>
+                <button type="button" id="saveBtn">저장</button>
+            </form>
+           
+           
         </div>
     </div>
 
@@ -106,6 +123,13 @@ function initializeMonthSelector() {
         $('#monthSelect').append(new Option(month, month));
     }
     $('#monthSelect').val(new Date().getMonth() + 1); // 현재 월로 초기화
+    
+    // 월 선택기의 스타일 설정 (배경색과 중앙 정렬)
+    $('#monthSelect').css({
+        'background-color': '#A98467', // 원하는 배경색
+        'text-align': 'center',
+        'font-size' : '30px'
+    });
 }
 
 function createCalendar(year) {
@@ -140,21 +164,25 @@ function createCalendar(year) {
 }
 
 function writeSchedule() {
-    const date = $('#date').val();
     const parentName = $('#parentName').val();
     const childName = $('#childName').val();
     const adviceContent = $('#adviceContent').val();
 
-    if (!date || !parentName || !childName || !adviceContent) {
+    if (!parentName || !childName || !adviceContent) {
         alert('모든 필드를 채워주세요.');
         return;
     }
 
     // 자녀 이름과 상담 내용 추가
-    const content = `<strong>${childName}</strong><br>`;
-    $(selectedCell).append(`<br>${content}`); // 선택한 셀에 내용 추가
+    const content = `
+        <div style="background-color: #DDE5B6; border-radius: 20px; padding: 5px 20px; margin-top: 10px; font-size:15px; width:90%;">
+            ${childName}
+        </div>`;
     
-    $('#modal').css('display', 'none'); // 모달 닫기
+    $(selectedCell).append(content); // 선택한 셀에 새 내용 추가
+
+    // 모달 닫고, 입력 필드 초기화
+    $('#modal').css('display', 'none');
     $('#parentName').val('');
     $('#childName').val('');
     $('#adviceContent').val('');

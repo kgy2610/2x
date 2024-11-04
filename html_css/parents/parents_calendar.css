@@ -79,43 +79,80 @@ a{
    background-color: #DDE5B6;
    border-radius: 30px;
    padding: 30px;
+   overflow-y: auto;
+   display: flex;
+   flex-wrap: wrap; /* 한 줄에 요소가 꽉 차면 다음 줄로 넘어가게 설정 */
    
 }
+
+/* 스크롤바 전체 스타일 */
+.wrap::-webkit-scrollbar {
+    width: 13px;
+ }
+ 
+ /* 스크롤바 트랙(배경) 스타일 */
+ .wrap::-webkit-scrollbar-track {
+    background: #F2CEB2; 
+    border-radius: 10px;
+ }
+ 
+ /* 스크롤바 핸들 스타일 */
+ .wrap::-webkit-scrollbar-thumb {
+    background: #A98467; /* 핸들 색상 */
+    border-radius: 10px; /* 둥근 모서리 */
+ }
+                
+ /* 스크롤바 핸들에 호버했을 때 스타일 */
+ .wrap::-webkit-scrollbar-thumb:hover {
+    background: #81644e; /* 호버 시 핸들 색상 */
+ }
 
 #calendar{
     width: 100%;
 }
 
+.header{
+    background-color: #A98467;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    width: 50%;
+    padding: 5px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
 #monthSelect{
-    border: #7C604B solid 2px;
+    border:none;
     border-radius: 20px;
     padding: 10px;
     width: 100px; height: 100%;
     font-size: 20px;
+    margin-top: -50px;
+    background-color: #70584500;
+    color: white;
+    font-size: 40px;
+    padding: 0;
 }
 
-td {
+#calendar td {
     width: 150px;
     height: 100px;
     color: #7C604B;
     border: #7C604B solid 2px;
     border-radius: 10px;
     background-color: white;
-}
-tr > td:first-child > p,
-tr > th:first-child > p {
-    color: red;
-}
-tr > td:last-child > p,
-tr > th:last-child > p {
-    color: blue;
-}
-td > p:hover {
-    cursor: pointer;
+    font-weight: 900;
 }
 
-tbody{
+
+#calendar tbody td{
     cursor: pointer;
+    padding:0;
+}
+
+#calendar tbody td:hover{
+    background-color: rgb(217, 215, 215);
 }
 
 .modal {
@@ -137,16 +174,21 @@ tbody{
  .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 40px;
+    padding: 20px;
     border: 3px solid #A98467;
     border-radius: 30px;
     width: 30%;
-    height: 40%;
+    height: 30%;
     position: absolute;
-     left: 40%;
-     top: 35%;
+    left: 40%;
+    top: 35%;
     max-height: 35%; /*스크롤제한높이*/
     overflow-y: auto;/*스크롤활성화*/
+ }
+
+ .modal-content td{
+    text-align: center;
+    margin: 10px;
  }
  
  
@@ -187,4 +229,6 @@ tbody{
     color: white;
     border:none;
     border-radius: 30px;
+    margin-top: 20px;
+    font-size: 20px;
  }
