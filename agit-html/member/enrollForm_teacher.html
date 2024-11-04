@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부모님 회원가입</title>
+    <title>선생님 회원가입</title>
     <link rel="stylesheet" href="./css/enrollForm_teacher.css">
+    <link rel="stylesheet" href="./css/enrollForm_teacher-modal.css">
 </head>
 <body>
     <div id="enrollForm-box">
@@ -26,7 +27,7 @@
                 <div id="enroll-find">
                     <p>학교찾기</p>
                     <input type="text" placeholder="학교코드 입력" autofocus>
-                    <input type="button" value="학교찾기">
+                    <input type="button" value="학교찾기" onclick="openSchoolModal()">
                 </div>
                 <div id="enroll-name">
                     <p>이름</p>
@@ -54,6 +55,70 @@
                 </div>
             </form>
         </div>
+
+        <!-- 모달 -->
+        <div id="noticeModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="school-con">
+                <div id="school-search">
+                    <div id="school-info">
+                        <div id="school-select">
+                            <select id="region-select">
+                                <option value="">지역 선택</option>
+                            </select>
+                            <select id="office-select">
+                                <option value="">교육청 선택</option>
+                            </select>
+                            <div id="schoolName-search">
+                                <input type="text" placeholder="학교명을 입력하세요">
+                            </div>
+                        </div>
+                        <script src="./js/school-select.js"></script>
+                    </div>
+                    <div id="schoolSearch-btn">
+                        <input type="button" value="검색">
+                    </div>
+                </div>
+                </div>
+                <div id="school-list">
+                    <table>
+                        <tr>
+                            <th>학교명</th>
+                            <th>주소</th>
+                        </tr>
+                        <tr>
+                            <td>경기초등학교</td>
+                            <td><a href="">서울특별시 서대문구 경기대로9길 10</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="">경기초등학교</a></td>
+                            <td>서울특별시 서대문구 경기대로9길 10</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 학교 검색 모달 열기
+            function openSchoolModal() {
+                document.getElementById('noticeModal').style.display = 'block';
+            }
+
+            // 모달 닫기
+            function closeModal() {
+                document.getElementById('noticeModal').style.display = 'none';
+            }
+
+            // 모달 밖 클릭 시 닫기
+            window.onclick = function(event) {
+                var modal = document.getElementById('noticeModal');
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        </script>
     </div>
 </body>
 </html>

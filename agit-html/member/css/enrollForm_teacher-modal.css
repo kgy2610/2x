@@ -32,7 +32,7 @@
  }
  
  .close {
-    width: 100%; height: 40px;
+    width: 762px; height: 40px;
     line-height: 38px;
     display: block;
     color: #fff;
@@ -42,88 +42,82 @@
     font-weight: bold;
     text-align: right;
     padding-right: 10px;
+    position: fixed;
  }
 
- #kid-search{
-    width: 660px; height: 180px;
-    background-color: #F4DABF;
-    border: none;
-    border-radius: 30px;
+ #school-con{
+    width: 660px; height: 245px;
+    /* border: 1px solid #6C584C; */
+    background-color: #F2CEB2;
+    border-radius: 20px;
+    display: flex;
     margin-top: 70px;
-    display: flex;
-    align-items: center;
  }
- #kid-info{
-    width: fit-content; height: 160px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 8px;
-    margin-left: 30px;
+ #school-search{
+    width: 580px; height: 245px;
+    margin-left: 80px;
  }
- #kid-name{
-    width: fit-content; height: fit-content;
-    margin-top: 20px;
- }
- #kid-name > p{
-    width: fit-content; height: fit-content;
-    margin: 0;
+ #school-search > #school-info{
+    width: 300px; height: 245px;
     float: left;
-    line-height: 50px;
-    padding-right: 30px;
  }
- #kid-name > input[type="text"]{
-    width: 340px; height: 50px;
-    border: #6C584C solid 2px;
-    border-radius: 10px;
-    padding-left: 10px;
+ #school-search > #school-info > #school-select{
+    width: 360px; height: 250px;
+    margin-top: 30px;
+ }
+ #school-search > #school-info > #school-select > #region-select, #office-select{
+    width: 300px; height: 50px;
     color: #6C584C;
-    font-size: 20px;
- }
-
- #kid-phone{
-    width: fit-content; height: fit-content;
-    margin-top: 20px;
- }
- #kid-phone > p{
-    width: fit-content; height: fit-content;
-    margin: 0;
-    float: left;
-    line-height: 50px;
-    padding-right: 36px;
- }
- #kid-phone > input[type="text"]{
-    width: 340px; height: 50px;
-    border: #6C584C solid 2px;
-    border-radius: 10px;
-    padding-left: 10px;
-    color: #6C584C;
-    font-size: 20px;
- } 
-
- #kidSearch-btn{
-    width: fit-content; height: fit-content;
-    margin-left: 0px;
-
- }
- #kidSearch-btn > input[type="button"]{
-    width: 110px; height: 50px;
-    background-color: #6C584C;
-    border: #6C584C 2px solid;
-    border-radius: 10px;
-    color: #fff;
     font-size: 20px;
     font-weight: 800;
+    padding: 10px 15px;
+    border: 2px solid #6C584C;
+    border-radius: 10px;
+    margin-bottom: 15px;
+ }
+ #schoolName-search > input[type="text"]{
+    width: 300px; height: 50px;
+    color: #6C584C;
+    font-size: 20px;
+    font-weight: 800;
+    border: 2px solid #6C584C;
+    border-radius: 10px;
+    padding: 15px;
+ }
+ #schoolSearch-btn{
+    width: 110px; height: 100%;
+    align-items: center;
+    display: flex;
+ }
+ #schoolSearch-btn > input[type="button"]{
+    width: 110px; height: 200px;
+    background-color: #fff;
+    border: #6C584C 2px solid;
+    border-radius: 10px;
+    color: #6C584C;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 5px;
     cursor: pointer;
  }
+ #schoolSearch-btn > input[type="button"]:hover{
+    background-color: #6C584C;
+    color: #fff;
+ }
 
- #kid-list{
+ 
+ #school-list{
     width: 660px; height: 270px;
     border: 1px solid #6C584C;
     margin-top: 30px;
+    margin-bottom: 30px;
  }
 
- /* 자녀 리스트 테이블 */
- #kid-list table{
+ /* 학교 검색 리스트 테이블 */
+
+
+ #school-list table{
    width: 100%; height: fit-content;
    text-align: center;
    table-layout: fixed;
@@ -131,34 +125,31 @@
    border-bottom: 1px #6C584C solid;
    border-collapse: collapse;
  }
- #kid-list table tr{
+ #school-list table tr{
    border-bottom: 1px solid #6C584C;
  }
- #kid-list table tr th{
+ #school-list table tr th{
    width: 100%; height: 40px;
    border-bottom: 1px solid #6C584C;
    border-left: 1px solid #6C584C;
    padding: 10px;
 
  }
- #kid-list table tr th:nth-child(1){
-    width: 20%; height: 30px;
+ #school-list table tr th:nth-child(1){
+    width: 30%; height: 30px;
     border-left: none;
  }
- #kid-list table tr th:nth-child(2){
-   width: 45%; height: 30px;
+ #school-list table tr th:nth-child(2){
+   width: 65%; height: 30px;
  }
- #kid-list table tr th:nth-child(3){
-   width: 20%; height: 30px;
- }
- #kid-list table tr td{
+ #school-list table tr td{
    border-left: #6C584C 1px solid;
    padding: 10px;
  }
- #kid-list table tr td:first-child{
+ #school-list table tr td:first-child{
    border-left: none;
  }
- #kid-list table tr td a{
+ #school-list table tr td a{
    color: #6C584C;
    font-weight: 800;
    text-decoration: underline;

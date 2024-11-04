@@ -115,6 +115,7 @@
     border: 3px solid #A98467;
     border-radius: 10px;
     margin-left: 5px;
+    cursor: pointer;
 }
 #enrollForm-form > form > #enroll-id > input[type="button"]:hover{
     background-color: #F4DABF;
@@ -240,6 +241,7 @@
     border: 3px solid #A98467;
     border-radius: 10px;
     margin-top: 20px;
+    cursor: pointer;
 }
 #enroll-btn > input[type="button"]:hover{
     background-color: #F4DABF;
