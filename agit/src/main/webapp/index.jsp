@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>AGIT</title>
 </head>
 <body>
-	프로젝트 테스트
+	<jsp:forward page="WEB-INF/views/main/main.jsp" />
 </body>
 </html>

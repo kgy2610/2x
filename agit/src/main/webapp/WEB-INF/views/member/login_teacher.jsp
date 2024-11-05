@@ -1,16 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>선생님 로그인</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/login_detail.css">
+    <title>AGIT</title>
+    <link rel="stylesheet" href="<c:url value='/resources/css/login.css'/>">
+    <link rel="stylesheet" href="<c:url value='/resources/css/login_detail.css'/>">
 </head>
 <body>
     <div id="login-box">
-        <div id="login-logo">
-            <img src="../common/img/logo.png">
+        <div id="login-logo" onclick="redirectToLogin()" style="cursor: pointer;">
+                <img src="<c:url value='/resources/img/logo.png'/>">
         </div>
         <div id="login-teacher">
             선생님 로그인
@@ -32,10 +35,16 @@
         </form>
 
         <div id="join-find">
-            <p><a href="./enrollForm_teacher.html">회원가입</a></p>
+            <p><a href="enrollForm.teacher">회원가입</a></p>
             <p> | </p>
-            <p><a href="./find_id-pwd.html">아이디/비밀번호 찾기</a></p>
+            <p><a href="find.id-pwd">아이디/비밀번호 찾기</a></p>
         </div>
     </div>
+    
+    <script>
+        function redirectToLogin() {
+            window.location.href = '<c:url value="/login"/>'; // login 컨트롤러로 이동
+        }
+    </script>
 </body>
 </html>

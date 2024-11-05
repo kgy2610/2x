@@ -1,15 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학생 회원가입</title>
-    <link rel="stylesheet" href="./css/enrollForm.css">
+    <title>AGIT</title>
+    <link rel="stylesheet" href="<c:url value='/resources/css/enrollForm.css'/>">
 </head>
 <body>
     <div id="enrollForm-box">
-        <div id="enroll-logo">
-            <img src="../common/img/logo.png">
+        <div id="enroll-logo" onclick="redirectToLogin()" style="cursor: pointer;">
+            <img src="<c:url value='/resources/img/logo.png'/>"">
         </div>
         <div id="enroll-bar">
             학생 회원가입
@@ -58,5 +61,11 @@
             </form>
         </div>
     </div>
+    
+    <script>
+        function redirectToLogin() {
+            window.location.href = '<c:url value="/login"/>'; // login 컨트롤러로 이동
+        }
+    </script>
 </body>
 </html>
