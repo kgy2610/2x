@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 /.metadata/
-=======
+
 # Created by https://www.toptal.com/developers/gitignore/api/java,macos,windows,visualstudiocode,maven,intellij,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,macos,windows,visualstudiocode,maven,intellij,eclipse
 
@@ -322,5 +321,6 @@ bower_components
 
 psd
 thumb
+
 sketch
->>>>>>> 6967f866b694e35439baac7934d905c539d272c5
+

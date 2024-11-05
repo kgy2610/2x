@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
+
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import org.springframework.stereotype.Component;
@@ -23,10 +24,10 @@ import lombok.extern.slf4j.Slf4j;
 public class LoggingAOP {
 
 
-	@Pointcut("execution(*메인패키지명..controller.*.*(..) )\")
+
+
 
 	@Pointcut("execution(* 메인패키지명..controller.*.*(..) )")
-
 	private void cut() {}
 	
 	@Before("cut()")

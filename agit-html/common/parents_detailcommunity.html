@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>parents_detailcommunity</title>
+    <link rel="stylesheet" href="./css/menubar.css">
+
+    <style>
+        #content_border{
+            position:absolute; 
+            border: 3px solid #A98467; 
+            border-radius: 30px; 
+            bottom: 47px; 
+            right: 228px; 
+            width: 1089px; 
+            height: 880px;
+        }
+        #community_title{
+            position:absolute; 
+            left:30px;
+            top: 20px;
+            color: #A98467;
+        }
+        .create_button{
+            position:absolute; 
+            width: 150px;
+            height: 50px;
+            left: 47px;
+            bottom: 10px;
+            border-radius: 40px; 
+            background-color: #F4DABF;
+            color:#A98467;
+            font-size: 20px;
+            border: 0px;
+        }
+        .create_button:hover{
+            background-color: #A98467;
+            color: white;
+            cursor: pointer;
+        }
+        #modify_button{
+            left: auto;
+            right: 47px;
+        }
+        #enroll_title{
+            position:absolute;
+            top: 30px;
+            left: 47px;
+            background-color: #DDE5B6; 
+            border-radius: 40px;
+            width: 989px;
+            height: 60px;
+            text-align: center;
+            color: #A98467;
+            font-size: 30px;
+            padding-top: 10px;
+        }
+        #enroll_info{
+            width: 989px;
+            height: 50px;
+            border-bottom: 3px solid #A98467;
+            text-align: right;
+            color: #A98467;
+            font-size: 20px;
+            padding-top: 10px;
+            padding-right: 10px;
+        }
+        #enroll_content{
+            position:absolute;
+            top: 100px;
+            left: 47px;
+            border: 3px solid #A98467; 
+            width: 989px;
+            height: 400px;
+        }
+        #en_content{
+            overflow: auto;
+            height: 265px;
+            border-bottom: 3px solid #A98467;
+        }
+        #enroll_file{
+            position:absolute;
+            display: flex;
+            align-items: center;
+            bottom: 11px;
+            left: 20px;
+            background-color: #DDE5B6; 
+            border-radius: 40px;
+            width: 950px;
+            height: 60px;
+        }
+
+        .custom-file-upload {
+            position:absolute;
+            left: 20px;
+            padding: 10px 20px;
+            color: #A98467;
+            background-color: white; /* 버튼 색상 */
+            border: 0px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #A98467;
+            color: white;
+        }
+        .file-name {
+            position: absolute;
+            left: 130px;
+            width: 200px;
+            font-size: 16px;
+            color: #333;
+        }
+        #reply_area{
+            position: absolute;
+            left: 47px;
+            bottom: 132px;
+            height: 235px;
+            width: 989px;
+            overflow: auto;
+        }
+/* 댓글 섹션 스크롤바 스타일 */
+        #reply_area::-webkit-scrollbar {
+            width: 8px; /* 스크롤바 너비 */
+        }
+
+        #reply_area::-webkit-scrollbar-track {
+            background: #F2CEB2; /* 스크롤바 트랙 배경 색상 */
+            border-radius: 10px;
+        }
+
+        #reply_area::-webkit-scrollbar-thumb {
+            background: #A98467; /* 스크롤바 핸들 색상 */
+            border-radius: 10px; /* 둥근 모서리 */
+        }
+
+        #reply_area::-webkit-scrollbar-thumb:hover {
+            background: #81644e; /* 스크롤바 핸들 호버 색상 */
+        }
+        .parents_reply{
+            float: left;
+            color:#A98467;
+            border-collapse: collapse;
+            width: 889px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .parents_reply tr td:nth-child(1){
+            width: 7px;
+        }
+        .parents_reply tr td:nth-child(1) div{
+            background-color: #DDE5B6; 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 40px;
+        }
+        .parents_reply tr td:nth-child(2){
+            width: 8%; 
+            text-align: center;
+        }
+        .parents_reply tr td:nth-child(3){
+            width: 70%; 
+            text-align: left;
+        }
+        .parents_reply tr td:nth-child(3) div{
+            height: 100%; 
+            background-color: #DDE5B6;
+            padding-top: 15px;
+            padding-left: 8px;
+            border-top-left-radius: 15px;
+            border-end-start-radius: 15px;
+        }
+        .parents_reply tr td:nth-child(4){
+            width: 7%;
+        }
+        .parents_reply tr td:nth-child(4) div{
+            width: 100%; 
+            height: 100%; 
+            padding-top:10px; 
+            background-color: #DDE5B6;
+        }
+        .parents_reply tr td:nth-child(4) button{
+            width: 80%; 
+            height: 30px; 
+            background-color: white; 
+            border: none; 
+            border-radius: 40px;
+            cursor: pointer;
+            color:#A98467;
+        }
+        .parents_reply tr td:nth-child(4) button:hover{
+            background-color: #A98467;
+            color: white;
+        }
+        .parents_reply tr td:nth-child(5) button:hover{
+            background-color: #A98467;
+            color: white;
+        }
+        .parents_reply tr td:nth-child(5){
+            width: 7%;
+        }
+        .parents_reply tr td:nth-child(5) div{
+            width: 100%; 
+            height: 100%; 
+            padding-top:10px; 
+            border-top-right-radius: 15px; 
+            border-end-end-radius: 15px; 
+            background-color: #DDE5B6;
+        }
+        .parents_reply tr td:nth-child(5) button{
+            width: 80%; 
+            height: 30px; 
+            background-color: white; 
+            border: none; 
+            border-radius: 40px;
+            color:#A98467;
+            cursor: pointer;
+        }
+        #vector{
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 35px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .child_reply{
+            margin-left: 40px;
+        }
+        .child_reply tr td:nth-child(1) div{
+            background-color: #F4DABF; 
+        }
+        .child_reply tr td:nth-child(3) div{
+            background-color: #F4DABF; 
+        }
+        .child_reply tr td:nth-child(4) div{
+            background-color: #F4DABF;
+        }
+        .child_reply tr td:nth-child(5) div{
+            background-color: #F4DABF;
+        }
+        #enroll_reply{
+            position: absolute;
+            left: 87px;
+            bottom: 67px;
+
+        }
+        #enroll_reply tr td:nth-child(3) div{
+            padding-top: 10px;
+        }
+        #enroll_reply tr td:nth-child(3) div input{
+            border-radius: 10px;
+            color:#A98467;
+            background: white;
+            font-size: 15px;
+            border: 0px;
+            width: 580px;
+            height: 30px;
+            padding-left: 10px;
+            overflow-y: auto;
+        }
+        #enroll_reply tr td:nth-child(3) div input:focus {
+            outline: none;
+        }
+        #enroll_reply tr td:nth-child(3) div input::placeholder {
+            color: #A98467;
+            opacity: 1;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <div class="nav">
+        <img src="./img/logo.png">
+        <div class="menu">
+            <label for="mypage"><a href="#">마이페이지</a></label>
+            <label for="score"><a href="#">성적</a></label>
+            <label for="advice"><a href="#">상담신청</a></label>
+            <label for="community"><a href="#">커뮤니티</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info"><a href="#">정보수정</a></label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+    
+    <div id="content_border">
+        <div id="enroll_title">김용담 선생님이 저희 애를 ㅠㅠ</div>
+        <div id="enroll_content" >
+            <div id="enroll_info">작성자 석현맘 | 조회수 24 | 2024-10-23</div>
+            <div id="en_content">여기 스타일 어떻게 해야될지 생각이 안나네 </div>
+            <div id="enroll_file">
+                <input type="file" id="fileInput" style="display: none;" onchange="showFileName()">
+                <label for="fileInput" class="custom-file-upload">
+                    파일 선택
+                </label>
+                <span id="fileName" class="file-name">선택된 파일이 없습니다</span>
+            </div>
+        </div>
+        <div id="reply_area">
+            <table class="parents_reply" >
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+        </div>
+        <table class="parents_reply" id="enroll_reply">
+            <tr>
+                <td><div></div></td>
+                <td>석현맘</td>
+                <td><div><input type="text" placeholder="댓글을 입력하세요" id="en_reply"></div></td>
+                <td><div></div></td>
+                <td><div><button>등록</button></div></td>
+                <td></td>
+            </tr>
+        </table>
+        <button class="create_button">목록으로</button>
+        <button class="create_button" id="modify_button">수정하기</button>
+    </div>
+    <script>
+        document.querySelectorAll(".text-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 3) {
+                element.innerText = text.substring(0, 3) + "...";
+            }
+        });
+
+        document.querySelectorAll(".title-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 15) {
+                element.innerText = text.substring(0, 12) + "...";
+            }
+        });
+
+        function showFileName() {
+            const fileInput = document.getElementById("fileInput");
+            const fileName = document.getElementById("fileName");
+
+            if (fileInput.files.length > 0) {
+                fileName.textContent = fileInput.files[0].name;
+            } else {
+                fileName.textContent = "선택된 파일이 없습니다";
+            }
+        }
+        const enTitleInput = document.getElementById("en_reply");
+
+        // 포커스가 되었을 때 placeholder 숨기기
+        enTitleInput.addEventListener("focus", function() {
+            enTitleInput.setAttribute("data-placeholder", enTitleInput.getAttribute("placeholder"));
+            enTitleInput.setAttribute("placeholder", "");
+        });
+
+        // 포커스가 해제되었을 때 원래 placeholder 복원
+        enTitleInput.addEventListener("blur", function() {
+            enTitleInput.setAttribute("placeholder", enTitleInput.getAttribute("data-placeholder"));
+        });
+    </script>
+</body>
+</html>
