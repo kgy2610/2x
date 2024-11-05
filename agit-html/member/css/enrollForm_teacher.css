@@ -47,13 +47,13 @@
 
 /* 회원가입 폼 */
 #enrollForm-box > #enrollForm-form{
-    width: 784px; height: 585px;
+    width: 784px; height: 650px;
     border: 3px solid #A98467;
     border-radius: 30px;
-    margin-top : 40px;
+    margin-top : 10px;
 }
 #enrollForm-box > #enrollForm-form > form{
-    width: 700px; height: 540px;
+    width: 700px; height: 630px;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -255,6 +255,53 @@
     padding: 20px;
 }
 
+/* 본인 확인 질문 */
+#enrollForm-form > form > #enroll-Q{
+    width: 100%; height: 80px;
+    padding-left: 25px;
+}
+#enrollForm-form > form > #enroll-Q > p{
+    width: fit-content; height: fit-content;
+    float: left;
+    color: #6C584C;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: right;
+    line-height: 56px;
+    padding-right: 30px;
+}
+#enrollForm-form > form > #enroll-Q > select{
+    width: 390px; height: 50px;
+    color: #6C584C;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid #6C584C;
+    padding: 10px;
+}
+/* 본인 확인 질문 답변 */
+#enrollForm-form > form > #enroll-A{
+    width: 100%; height: 80px;
+    padding-left: 133px;
+}
+#enrollForm-form > form > #enroll-A > p{
+    width: fit-content; height: fit-content;
+    float: left;
+    color: #6C584C;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: right;
+    line-height: 56px;
+    padding-right: 30px;
+}
+#enrollForm-form > form > #enroll-A > input[type="text"]{
+    width: 390px; height: 50px;
+    font-size: 20px;
+    letter-spacing: -2px;
+    border-radius: 10px;
+    border: 3px solid #6C584C;
+    padding: 20px;
+}
+
 /* 회원가입 버튼 */
 #enroll-btn{
     width: 400px; height: 120px;
@@ -269,7 +316,7 @@
     letter-spacing: 6px;
     border: 3px solid #A98467;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 #enroll-btn > input[type="button"]:hover{
     background-color: #F4DABF;
