@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agit</title>
+    <link rel="stylesheet" href="./css/calendar.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <img src="./img/logo.png">
+        <div class="menu">
+            <label for="mypage"><a href="#">마이페이지</a></label>
+            <label for="score"><a href="#">성적</a></label>
+            <label for="advice"><a href="#">상담신청</a></label>
+            <label for="community"><a href="#">커뮤니티</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info"><a href="#">정보수정</a></label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="header">
+            <div>
+                2024년
+                <select id="monthSelect"></select>월
+            </div>
+        </div>
+        
+        <br />
+
+        <table align="center" width="500" style="text-align: center" id="calendar">
+            <thead>
+                <tr>
+                    <th>일</th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th>토</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 날짜(js) -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 모달 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <form action="">
+                <span class="close" id="closeBtn">&times;</span>
+                <table>
+                    <tr>
+                        <td>학부모 이름</td>
+                        <td><input type="text" id="parentName" /></td>
+                    </tr>
+                    <tr>
+                        <td>자녀 이름</td>
+                        <td><input type="text" id="childName" /></td>
+                    </tr>
+                    <tr>
+                        <td>상담 내용</td>
+                        <td> <input type="text" id="adviceContent" /></td>
+                    </tr>
+                </table>
+                <button type="button" id="saveBtn">저장</button>
+            </form>
+           
+           
+        </div>
+    </div>
+
+    <script src="calendar.js"></script>
+
+    <script>
+    $(document).ready(function() {
+    const fixedYear = 2024;
+    initializeMonthSelector();
+    createCalendar(fixedYear);
+
+    $('#monthSelect').on('change', function() {
+        createCalendar(fixedYear);
+    });
+
+    $('#calendar').on('click', 'td', function() {
+        const day = $(this).text();
+        if (day) {
+            $('#date').val(`${fixedYear}-${$('#monthSelect').val().padStart(2, '0')}-${day.padStart(2, '0')}`);
+            $('#modal').css('display', 'block'); // 모달 열기
+            selectedCell = $(this); // 선택한 셀 저장
+        }
+    });
+
+    $('#closeBtn').on('click', function() {
+        $('#modal').css('display', 'none'); // 모달 닫기
+    });
+
+    $('#saveBtn').on('click', function() {
+        writeSchedule();
+    });
+
+    $(window).on('click', function(event) {
+        if ($(event.target).is('#modal')) {
+            $('#modal').css('display', 'none'); // 모달 외부 클릭 시 닫기
+        }
+    });
+});
+
+let selectedCell; 
+
+function initializeMonthSelector() {
+    // 월 선택기 설정
+    for (let month = 1; month <= 12; month++) {
+        $('#monthSelect').append(new Option(month, month));
+    }
+    $('#monthSelect').val(new Date().getMonth() + 1); // 현재 월로 초기화
+    
+    // 월 선택기의 스타일 설정 (배경색과 중앙 정렬)
+    $('#monthSelect').css({
+        'background-color': '#A98467', // 원하는 배경색
+        'text-align': 'center',
+        'font-size' : '30px'
+    });
+}
+
+function createCalendar(year) {
+    const month = $('#monthSelect').val();
+    const daysInMonth = new Date(year, month, 0).getDate(); // 해당 월의 일 수
+    const firstDay = new Date(year, month - 1, 1).getDay(); // 첫 번째 날의 요일
+    const tbody = $('#calendar tbody');
+
+    // 테이블 비우기
+    tbody.empty();
+    
+    // 빈 셀 추가
+    let rows = '';
+    let day = 1;
+
+    for (let i = 0; i < 6; i++) { // 6주까지
+        rows += '<tr>';
+        for (let j = 0; j < 7; j++) { // 7일
+            if (i === 0 && j < firstDay) {
+                rows += '<td></td>'; // 빈 셀
+            } else if (day > daysInMonth) {
+                rows += '<td></td>'; // 빈 셀
+            } else {
+                rows += `<td>${day}</td>`;
+                day++;
+            }
+        }
+        rows += '</tr>';
+    }
+
+    tbody.html(rows);
+}
+
+function writeSchedule() {
+    const parentName = $('#parentName').val();
+    const childName = $('#childName').val();
+    const adviceContent = $('#adviceContent').val();
+
+    if (!parentName || !childName || !adviceContent) {
+        alert('모든 필드를 채워주세요.');
+        return;
+    }
+
+    // 자녀 이름과 상담 내용 추가
+    const content = `
+        <div style="background-color: #DDE5B6; border-radius: 20px; padding: 5px 20px; margin-top: 10px; font-size:15px; width:90%;">
+            ${childName}
+        </div>`;
+    
+    $(selectedCell).append(content); // 선택한 셀에 새 내용 추가
+
+    // 모달 닫고, 입력 필드 초기화
+    $('#modal').css('display', 'none');
+    $('#parentName').val('');
+    $('#childName').val('');
+    $('#adviceContent').val('');
+}
+
+    </script>
+
+</body>
+
+</html>

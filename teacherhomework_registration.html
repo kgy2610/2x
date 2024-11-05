@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교직원-숙제 등록하기</title>
+    <link rel="stylesheet" href="./css/teacherhomework_modify.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    
+    <!-- Summernote CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" rel="stylesheet">
+    
+    <style>
+        *{
+            overflow: visible;
+        }
+        #content_border{
+            position: absolute; 
+            border: 3px solid #A98467; 
+            border-radius: 30px; 
+            bottom: 47px; 
+            right: 228px; 
+            width: 1089px; 
+            height: 880px;
+        }
+        #community_title{
+            position: absolute; 
+            left: 30px;
+            top: 20px;
+            color: #A98467;
+        }
+        #create_button{
+            position: absolute; 
+            width: 150px;
+            height: 50px;
+            left: 450px;
+            bottom: 30px;
+            border-radius: 40px; 
+            background-color: #F4DABF;
+            color: #A98467;
+            font-size: 20px;
+            border: 0px;
+        }
+        #create_button:hover{
+            background-color: #A98467;
+            color: white;
+            cursor: pointer;
+        }
+        #enroll_title{
+            position: absolute;
+            top: 30px;
+            left: 47px;
+            background-color: #DDE5B6; 
+            border-radius: 40px;
+            width: 989px;
+            height: 60px;
+        }
+        #en_title{
+            position: absolute;
+            text-align: center;
+            top: 10px;
+            left: 50px;
+            width: 889px;
+            height: 40px;
+            color: #A98467;
+            background: none;
+            font-size: 30px;
+            border: 0px;
+        }
+        #en_title::placeholder {
+            color: #A98467;
+            opacity: 1;
+        }
+        #en_title:focus {
+            outline: none;
+        }
+        .note-editor .note-editable {
+            overflow-y: auto;
+        }
+
+        /* 스크롤바 스타일 */
+        .note-editor .note-editable::-webkit-scrollbar {
+            width: 8px;
+        }
+        .note-editor .note-editable::-webkit-scrollbar-thumb {
+            background-color: #A98467;
+            border-radius: 10px;
+        }
+        .note-editor .note-editable::-webkit-scrollbar-thumb:hover {
+            background-color: #81644e;
+        }
+        .note-editor .note-editable::-webkit-scrollbar-track {
+            background: #F2CEB2;
+        }
+
+        #enroll_file{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            bottom: 11px;
+            left: 20px;
+            background-color: #DDE5B6; 
+            border-radius: 40px;
+            width: 950px;
+            height: 60px;
+        }
+
+        .custom-file-upload {
+            position: absolute;
+            left: 20px;
+            padding: 10px 20px;
+            color: #A98467;
+            background-color: white;
+            border: 0px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .custom-file-upload:hover {
+            background-color: #A98467;
+            color: white;
+        }
+        .file-name {
+            position: absolute;
+            left: 130px;
+            width: 200px;
+            font-size: 16px;
+            color: #333;
+        }
+        .note-resizebar {
+            display: none;
+        }
+        #chat_button{
+            position: absolute;
+            right: 47px;
+            bottom: 40px;
+            height: 100px;
+            width: 100px;
+            background-color: #DDE5B6;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .real-body {
+            position: relative;
+            padding: 20px;
+            border: 3px solid #A98467;
+            border-radius: 30px;
+            width: 810px;
+            margin: 20px auto;
+        }
+
+        #enroll_content {
+            margin-top: 20px;
+            border: 3px solid #A98467;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        #en_content {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="whole_body">
+        <div class="nav">
+            <img src="../common/img/logo.png">
+            <div class="menu">
+                <label for="mypage" id="mypage"><a href="#">마이페이지</a></label>
+                <label for="homework" id="homework"><a href="#" class="homework">숙제</a></label>
+                <label for="attendance"><a href="#">출결</a></label>
+                <label for="community"><a href="#">방과후 반</a></label>
+                <label for="advicePlan"><a href="#">상담일정</a></label>
+                <label for="photo"><a href="#">행사사진</a></label>
+                <label for="studentManage"><a href="#">학생관리</a></label>
+            </div>
+            <div class="undermenu">
+                <label for="info"><a href="#">정보수정</a></label>
+                <label for="logout"><a href="#">로그아웃</a></label>
+            </div>
+        </div>
+        <div class="use-body">
+            <div class="subject-name">제목</div>
+            <select class="subject-select">
+                <option>국어</option>
+                <option>수학</option>
+                <option>과학</option>
+                <option>영어</option>
+            </select>
+        </div>
+        <div class="real-body">
+            <div class="real-head">
+                <div class="head-real-date" id="selectedDate">마감일</div>
+                <hr>
+                <img src="./img/free-icon-calendar-check-7955802 4.png" id="dateIcon" style="cursor: pointer;" class="img-calendar"/>
+                <input type="text" id="datepicker" style="display:none;" />
+            </div>
+            <hr class="line1">
+
+            <div id="enroll_content">
+                <textarea id="en_content"></textarea>
+            </div>
+
+            <div class="file-attachment">
+                <label for="file-upload" class="custom-file-upload">파일 첨부</label>
+                <span class="file-name" id="file-name">선택된 파일 없음</span>
+                <input type="file" id="file-upload" class="file-upload">
+            </div>
+        </div>
+        <div class="real-foot">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <button class="foot-first">등록</button>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="chat_button"><img src="img/message.png"></div>
+    </div>
+
+    <!-- jQuery 및 기타 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Date Range Picker 초기화
+            $('#datepicker').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                autoApply: true,
+                startDate: moment(),
+                locale: {
+                    format: 'YYYY-MM-DD'
+                },
+                drops: 'up',
+                opens: 'center'
+            }, function(start) {
+                $('#selectedDate').text(start.format('YYYY-MM-DD'));
+            });
+
+            // img 클릭 시 달력 열기 및 위치 조정
+            $('#dateIcon').on('click', function() {
+                $('#datepicker').focus();
+                setTimeout(function() {
+                    var iconPosition = $('#dateIcon').offset();
+                    var iconHeight = $('#dateIcon').outerHeight();
+                    $('.daterangepicker').css({
+                        top: iconPosition.top + iconHeight + 10 + "px",
+                        left: iconPosition.left + "px"
+                    });
+                }, 10);
+            });
+
+            // Summernote 초기화
+            $('#en_content').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                lang: "ko-KR",
+                resizable: false,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['help']]
+                ],
+                callbacks: {
+                    onImageUpload: fileUpload
+                }
+            });
+        });
+
+        function fileUpload(files) {
+            const fd = new FormData();
+            for(let file of files) {
+                fd.append("fileList", file);
+            }
+
+            insertFile(fd, function(nameList) {
+                for(let name of nameList) {
+                    $("#en_content").summernote("insertImage", "/img/" + name)
+                }
+            });
+        }
+
+        function insertFile(data, callback) {
+            $.ajax({
+                url: "upload",
+                type: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(res) {
+                    callback(res)
+                },
+                error: function() {
+                    console.log("파일업로드 api요청 실패")
+                }
+            });
+        }
+
+        // 파일 선택 시 파일명을 표시하는 JavaScript 코드
+        document.getElementById('file-upload').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : "선택된 파일 없음";
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
