@@ -21,17 +21,17 @@
         </div>
     </div>
     <div id="login-form">
-        <form>
+        <form action="parentsLogin">
             <div id="login-id">
                 <p>아이디</p>
-                <input type="text" placeholder="아이디를 입력하세요." autofocus>
+                <input type="text" placeholder="아이디를 입력하세요." name="prId" autofocus>
             </div>
             <div id="login-pwd">
                 <p>비밀번호</p>
-                <input type="password" placeholder="비밀번호를 입력하세요." autofocus>
+                <input type="password" placeholder="비밀번호를 입력하세요." name="prPwd" autofocus>
             </div>
             <div id="login-btn">
-                <input type="button" value="로그인">
+                <input type="submit" value="로그인">
             </div>
         </form>
 

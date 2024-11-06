@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace: 해당 mapper파일의 고유한 별칭 -->
+
+<mapper namespace="memberMapper">
+	<resultMap type="Parents" id="parentsResult">
+		<result column="PR_ID" property="prId"/>
+		<result column="PR_PWD" property="prPwd"/>
+		<result column="PR_NAME" property="prName"/>
+		<result column="PHONE" property="phone"/>
+		<result column="NICKNAME" property="nickname"/>
+		<result column="PR_QUESTION" property="prQuestion"/>
+		<result column="PR_ANSWER" property="prAnswer"/>
+	</resultMap>
+	<resultMap type="Student" id="studentResultSet">
+     <result column="STU_ID" property="stuId"/>
+     <result column="STU_PWD" property="stuPwd"/>
+     <result column="CLASS_CODE" property="classCode"/>
+     <result column="STU_NAME" property="stuName"/>
+   	 <result column="PHONE" property="phone"/>
+     <result column="STU_NUM" property="stuNum"/>
+     <result column="STATUS" property="status"/>
+     <result column="PIC_NO" property="picNo"/>
+     <result column="STU_QUESTION" property="stuQuestion"/>
+     <result column="STU_ANSWER" property="stuAnswer"/>
+  </resultMap>
+	
+<!-- 학부모 회원가입 -->
+ <insert id="insertParents">
+ 	INSERT INTO PARENTS(PR_ID,PR_PWD,PR_NAME,PHONE,NICKNAME,PR_QUESTION,PR_ANSWER)
+	VALUES(#{prId},#{prPwd},#{prName},#{phone},#{nickname},#{prQuestion},#{prAnswer})
+ </insert>
+ 
+ <!-- 학부모 회원가입시 학생아이디 가져오기 -->
+   <select id="selectStudentList" parameterType="Student" resultMap="studentResultSet">
+  	SELECT STU_ID,
+         STU_NAME,
+         STU_NUM,
+         CLASS_CODE
+     FROM STUDENT
+     WHERE STU_NAME = #{stuName}
+        AND PHONE = #{phone}
+     
+  </select>
+ 
+ <!-- 학부모 로그인 -->
+ <select id="loginParents" parameterType="Parents" resultMap="parentsResult">
+ 	SELECT PR_ID,
+		   PR_PWD,
+		   PR_NAME,
+		   PHONE,
+		   NICKNAME,
+		   PR_QUESTION,
+		   PR_ANSWER
+	FROM PARENTS
+	WHERE PR_ID = #{prId}
+	  AND PR_PWD = #{prPwd}
+ </select>
+</mapper>

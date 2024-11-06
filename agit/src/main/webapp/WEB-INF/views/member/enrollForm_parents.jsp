@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGIT</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="<c:url value='/resources/css/enrollForm.css'/>">
     <link rel="stylesheet" href="<c:url value='/resources/css/enrollForm_parents-modal.css'/>">
 </head>
@@ -20,35 +21,35 @@
         </div>
 
         <div id="enrollForm-form">
-            <form action="">
+            <form action="enroll.parents" method="POST">
                 <div id="enroll-name">
                     <p>이름</p>
-                    <input type="text" placeholder="이름을 입력하세요." autofocus>
+                    <input type="text" placeholder="이름을 입력하세요." id="pr_name" name="prName" autofocus>
                 </div>
                 <div id="enroll-nickname">
                     <p>닉네임</p>
-                    <input type="text" placeholder="이름을 입력하세요." autofocus>
+                    <input type="text" placeholder="닉네임을 입력하세요." id="pr_nickname" name="nickname" autofocus>
                 </div>
                 <div id="enroll-id">
                     <p>아이디</p>
-                    <input type="text" placeholder="자녀아이디 입력" autofocus>
+                    <input type="text" id="pr_id" name="prId" readonly>
                     <input type="button" value="자녀아이디 검색" onclick="openChildIdModal()">
                 </div>
                 <div id="enroll-pwd">
                     <p id="enroll-pwd-p">비밀번호</p>
-                    <input type="text" placeholder="비밀번호를 입력하세요." autofocus>
+                    <input type="text" placeholder="비밀번호를 입력하세요." id="pr_pwd" name="prPwd" autofocus>
                 </div>
                 <div id="enroll-pwd">
                     <p>비밀번호 확인</p>
-                    <input type="text" placeholder="이름을 입력하세요." autofocus>
+                    <input type="text" placeholder="비밀번호를 다시 입력하세요." autofocus>
                 </div>
                 <div id="enroll-phone">
                     <p>전화번호</p>
-                    <input type="text" placeholder="(-)제외하고 입력 ex)01011112222" autofocus>
+                    <input type="text" id="phone" name="phone" placeholder="(-)제외하고 입력 ex)01011112222" autofocus>
                 </div>
                 <div id="enroll-Q">
                     <p>본인 확인 질문</p>
-                    <select>
+                    <select name="prQuestion">
                         <option value="entrance">아이가 입학할 때 기억에 남던 순간은?</option>
                         <option value="travel">가장 기억에 남는 여행지는?</option>
                         <option value="subject">가장 좋아했던 과목은?</option>
@@ -58,10 +59,10 @@
                 </div>
                 <div id="enroll-A">
                     <p>답변</p>
-                    <input type="text" placeholder="비밀번호 찾기에 사용됩니다. 잘 기억해주세요!">
+                    <input type="text" id="pr_answer" name="prAnswer" placeholder="비밀번호 찾기에 사용됩니다. 잘 기억해주세요!">
                 </div>
                 <div id="enroll-btn">
-                    <input type="button" value="회원가입">
+                    <input type="submit" value="회원가입">
                 </div>
             </form>
         </div>
@@ -75,33 +76,23 @@
                 <div id="kid-info">
                     <div id="kid-name">
                         <p>자녀 이름</p>
-                        <input type="text">
+                        <input type="text" id="child_name">
                     </div>
                     <div id="kid-phone">
                         <p>전화번호</p>
-                        <input type="text" placeholder="(-)제외한 자녀 전화번호 입력">
+                        <input type="text" id="phone_num" placeholder="(-)제외한 자녀 전화번호 입력">
                     </div>
                 </div>
                 <div id="kidSearch-btn">
-                    <input type="button" value="검 색">
+                    <input type="button" onclick="searchPrId()" value="검 색">
                 </div>
             </div>
             <div id="kid-list">
-                <table>
+                <table id="child_list">
                     <tr>
                         <th>자녀 이름</th>
                         <th>반 / 번호</th>
                         <th>아이디 선택</th>
-                    </tr>
-                    <tr>
-                        <td>신서희</td>
-                        <td>매화반</td>
-                        <td><a href="">tjgml1210</a></td>
-                    </tr>
-                    <tr>
-                        <td>신서희</td>
-                        <td>매화반</td>
-                        <td><a href="">tjgml1210</a></td>
                     </tr>
                 </table>
             </div>
@@ -125,6 +116,39 @@
             if (event.target == modal) {
                 closeModal();
             }
+        }
+        function inputPrId(element){
+        	var prid = element.innerText;
+        	console.log(prid);
+        	const inputId = document.getElementById('pr_id');
+        	inputId.value = prid;
+        	document.getElementById('noticeModal').style.display = 'none';
+        }
+        function searchPrId(){
+        	const child_name = document.getElementById('child_name').value;
+        	const phone_num = document.getElementById('phone_num').value;
+        	$.ajax({
+        		url: "child.list",
+        		data: {
+    				name: child_name,
+    				phone: phone_num
+    			},
+    			success: function(res){
+    				let str = "";
+                    for(let ch of res){
+                    	str += ("<tr>" +
+                                "<td>" + ch.stuName + "</td>" +
+                                "<td>" + ch.classCode + "</td>" + 
+                                "<td><a onclick='inputPrId(this)'>" + ch.stuId + "</a></td>" +
+                                "</tr>")
+                    }
+					
+                    var element = document.getElementById('child_list');  
+                	element.innerHTML += str;
+    			},error: function(){
+    				console.log("ajax통신 실패")
+    			}
+        	})
         }
     </script>
     <script>
