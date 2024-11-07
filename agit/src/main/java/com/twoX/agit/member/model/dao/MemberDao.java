@@ -21,4 +21,8 @@ public class MemberDao {
 	public Parents loginParents(SqlSessionTemplate sqlSession, Parents p) {
 		return sqlSession.selectOne("memberMapper.loginParents",p);
 	}
+	
+	public Parents findId(SqlSessionTemplate sqlSession, Parents p) {
+		return sqlSession.selectOne("memberMapper.findId",p);
+	}
 }

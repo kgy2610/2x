@@ -148,7 +148,7 @@
     text-align: right;
     line-height: 56px;
 }
-#enrollForm-form > form > #enroll-pwd > input[type="text"]{
+#enrollForm-form > form > #enroll-pwd > input[type="password"]{
     width: 390px; height: 50px;
     font-size: 20px;
     border-radius: 10px;

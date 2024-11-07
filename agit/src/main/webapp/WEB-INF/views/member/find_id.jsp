@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGIT</title>
+    <title>아이디/비밀번호 찾기</title>
+    <link rel="stylesheet" href="<c:url value='/resources/css/find_success.css'/>">
     <link rel="stylesheet" href="<c:url value='/resources/css/find_id-pwd.css'/>">
 </head>
 <body>
@@ -27,18 +28,27 @@
             <label for="findPwd">비밀번호 찾기</label>
         
             <div class="conbox con1">
-                <form action="find_ID" id="findId-form" method="POST">
-                    <div id="findId-name">
-                        <p>이름</p>
-                        <input type="text" placeholder="이름을 입력하세요" name="prName">
-                    </div>
-                    <div id="findId-phone">
-                        <p>전화번호</p>
-                        <input type="text" placeholder="(-)제외하고 입력 ex)01011112222" name="phone">
-                    </div>
-                    <div id="findId-btn">
-                        <input type="submit" value="아이디 찾기">
-                    </div>
+                <form action="" id="findId-form">
+                	<c:choose>
+	            	<c:when test="${empty findId.prId}">
+	                    <div id="findId-result-fail">
+	                        <b>${findId.prName }</b>님의 아이디는 <br>
+	                        <b>존재하지 않습니다</b>
+	                    </div>
+	                    <div id="successbtn-area">
+	                        <input type="button"value="로그인화면으로"  onclick="redirectToLogin()" style="letter-spacing: 5px;">
+	                    </div>
+	            	</c:when>
+	                <c:otherwise>
+	                    <div id="findId-result-fail">
+	                        <b>${findId.prName}</b>님의 아이디는 <br>
+	                        <b>${findId.prId} </b>입니다.
+	                    </div>
+	                    <div id="successbtn-area">
+	                        <input type="button"value="로그인화면으로" onclick="redirectToLogin()" style="letter-spacing: 5px;">
+	                    </div>
+	                </c:otherwise>
+	            </c:choose> 
                 </form>
             </div>
             <div class="conbox con2">
@@ -62,8 +72,10 @@
             </div>
         </div>
     </div>
-    
     <script>
+        function redirectToLogin() {
+            window.location.href = '<c:url value="/login"/>'; // login 컨트롤러로 이동
+        }
         function redirectToLogin() {
             window.location.href = '<c:url value="/login"/>'; // login 컨트롤러로 이동
         }

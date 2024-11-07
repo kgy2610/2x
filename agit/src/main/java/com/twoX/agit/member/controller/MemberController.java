@@ -63,7 +63,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("parentsLogin")
-	public ModelAndView parentsLogin(Parents p, HttpSession session, ModelAndView mv, String saveId, HttpServletResponse response) {
+	public ModelAndView parentsLogin(Parents p, HttpSession session, ModelAndView mv, HttpServletResponse response) {
 		
 		Parents loginParents = MemberService.loginParents(p);
 		System.out.println(p);
@@ -108,6 +108,20 @@ public class MemberController {
 			}			
 		}
 		return new Gson().toJson(list);
+	}
+	
+	@RequestMapping("find_ID")
+	public ModelAndView findId(Parents p, HttpSession session, ModelAndView mv, HttpServletResponse response) {
+		System.out.print(p);
+		Parents findId = MemberService.findId(p);
+		System.out.print(findId);
+		if(findId == null) { // 아이디없는 경우
+			session.setAttribute("findId", p);	
+		} else {
+			session.setAttribute("findId", findId);
+		}
+		mv.setViewName("member/find_id");
+		return mv;
 	}
 }
 	

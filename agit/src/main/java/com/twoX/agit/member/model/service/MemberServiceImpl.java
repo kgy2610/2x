@@ -34,4 +34,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.loginParents(sqlSession, p);
 	}
 
+	@Override
+	public Parents findId(Parents p) {
+		return memberDao.findId(sqlSession, p);
+	}
+
 }

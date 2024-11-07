@@ -11,4 +11,6 @@ public interface MemberService {
 	ArrayList<Student> selectStudentList(Student s);
 	
 	Parents loginParents(Parents p);
+	
+	Parents findId(Parents p);
 }

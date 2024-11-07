@@ -21,7 +21,7 @@
         </div>
     </div>
     <div id="login-form">
-        <form action="parentsLogin">
+        <form action="parentsLogin" method="POST">
             <div id="login-id">
                 <p>아이디</p>
                 <input type="text" placeholder="아이디를 입력하세요." name="prId" autofocus>

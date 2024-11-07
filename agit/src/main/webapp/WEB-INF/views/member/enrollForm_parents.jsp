@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="<c:url value='/resources/css/enrollForm.css'/>">
     <link rel="stylesheet" href="<c:url value='/resources/css/enrollForm_parents-modal.css'/>">
+    <script src="<c:url value='/resources/js/enrollForm_parents_api.js'/>"></script>
 </head>
 <body>
     <div id="enrollForm-box">
@@ -24,28 +25,28 @@
             <form action="enroll.parents" method="POST">
                 <div id="enroll-name">
                     <p>이름</p>
-                    <input type="text" placeholder="이름을 입력하세요." id="pr_name" name="prName" autofocus>
+                    <input type="text" placeholder="이름을 입력하세요." id="pr_name" name="prName" required autofocus>
                 </div>
                 <div id="enroll-nickname">
                     <p>닉네임</p>
-                    <input type="text" placeholder="닉네임을 입력하세요." id="pr_nickname" name="nickname" autofocus>
+                    <input type="text" placeholder="닉네임을 입력하세요." id="pr_nickname" name="nickname" required autofocus>
                 </div>
                 <div id="enroll-id">
                     <p>아이디</p>
-                    <input type="text" id="pr_id" name="prId" readonly>
+                    <input type="text" id="pr_id" name="prId" readonly required>
                     <input type="button" value="자녀아이디 검색" onclick="openChildIdModal()">
                 </div>
                 <div id="enroll-pwd">
                     <p id="enroll-pwd-p">비밀번호</p>
-                    <input type="text" placeholder="비밀번호를 입력하세요." id="pr_pwd" name="prPwd" autofocus>
+                    <input type="password" placeholder="비밀번호를 입력하세요." id="pr_pwd" name="prPwd" autofocus required>
                 </div>
                 <div id="enroll-pwd">
                     <p>비밀번호 확인</p>
-                    <input type="text" placeholder="비밀번호를 다시 입력하세요." autofocus>
+                    <input type="password" placeholder="비밀번호를 다시 입력하세요." autofocus required>
                 </div>
                 <div id="enroll-phone">
                     <p>전화번호</p>
-                    <input type="text" id="phone" name="phone" placeholder="(-)제외하고 입력 ex)01011112222" autofocus>
+                    <input type="text" id="phone" name="phone" placeholder="(-)제외하고 입력 ex)01011112222" autofocus required>
                 </div>
                 <div id="enroll-Q">
                     <p>본인 확인 질문</p>
@@ -59,7 +60,7 @@
                 </div>
                 <div id="enroll-A">
                     <p>답변</p>
-                    <input type="text" id="pr_answer" name="prAnswer" placeholder="비밀번호 찾기에 사용됩니다. 잘 기억해주세요!">
+                    <input type="text" id="pr_answer" name="prAnswer" placeholder="비밀번호 찾기에 사용됩니다. 잘 기억해주세요!" required>
                 </div>
                 <div id="enroll-btn">
                     <input type="submit" value="회원가입">
@@ -124,32 +125,7 @@
         	inputId.value = prid;
         	document.getElementById('noticeModal').style.display = 'none';
         }
-        function searchPrId(){
-        	const child_name = document.getElementById('child_name').value;
-        	const phone_num = document.getElementById('phone_num').value;
-        	$.ajax({
-        		url: "child.list",
-        		data: {
-    				name: child_name,
-    				phone: phone_num
-    			},
-    			success: function(res){
-    				let str = "";
-                    for(let ch of res){
-                    	str += ("<tr>" +
-                                "<td>" + ch.stuName + "</td>" +
-                                "<td>" + ch.classCode + "</td>" + 
-                                "<td><a onclick='inputPrId(this)'>" + ch.stuId + "</a></td>" +
-                                "</tr>")
-                    }
-					
-                    var element = document.getElementById('child_list');  
-                	element.innerHTML += str;
-    			},error: function(){
-    				console.log("ajax통신 실패")
-    			}
-        	})
-        }
+
     </script>
     <script>
         function redirectToLogin() {

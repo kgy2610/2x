@@ -59,4 +59,29 @@
 	WHERE PR_ID = #{prId}
 	  AND PR_PWD = #{prPwd}
  </select>
+ <select id="findId" parameterType="Parents" resultMap="parentsResult">
+ 	SELECT ID AS PR_ID,
+		   NAME AS PR_NAME,
+		   PHONE
+	FROM (
+		 SELECT TC_NAME AS NAME,
+		 		TC_ID AS ID, 
+        		PHONE
+	       FROM TEACHER
+	       
+    	  UNION
+    	 SELECT STU_NAME AS NAME,
+    	 		STU_ID AS ID, 
+    	        PHONE
+	       FROM STUDENT
+	       
+    	  UNION
+    	 SELECT PR_NAME AS NAME,
+    	 		PR_ID AS ID, 
+        		PHONE
+	       FROM PARENTS
+		 )
+	WHERE NAME = #{prName}
+	  AND PHONE = #{phone}
+ </select>
 </mapper>
