@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<!-- 학생 -->
+	<resultMap type="Student" id="studentResultSet">
+		<result column="STU_ID" property="stuId" />
+		<result column="STU_PWD" property="stuPwd" />
+		<result column="CLASS_CODE" property="classCode" />
+		<result column="STU_NAME" property="stuName" />
+		<result column="PHONE" property="phone" />
+		<result column="STU_NUM" property="stuNum" />
+		<result column="STATUS" property="status" />
+		<result column="PIC_NO" property="picNo" />
+		<result column="STU_QUESTION" property="stuQuestion" />
+		<result column="STU_ANSWER" property="stuAnswer" />
+	</resultMap>
+
+	<!-- 학생 로그인 -->
+	<select id="loginStudent" parameterType="Student"
+		resultMap="studentResultSet">
+		SELECT STU_ID,
+		STU_PWD,
+		CLASS_CODE,
+		STU_NAME,
+		PHONE,
+		STU_NUM,
+		STATUS,
+		PIC_NO,
+		STU_QUESTION,
+		STU_ANSWER
+		FROM STUDENT
+		WHERE STU_ID =
+		#{stuId}
+		AND STU_PWD = #{stuPwd}
+	</select>
+
+	<!-- 학생 회원가입 -->
+	<insert id="insertStudent">
+		INSERT INTO STUDENT(
+		STU_ID,
+		STU_PWD,
+		STU_NAME,
+		PHONE,
+		STU_QUESTION,
+		STU_ANSWER
+		)VALUES(
+		#{stuId},
+		#{stuPwd},
+		#{stuName},
+		#{phone},
+		#{stuQuestion},
+		#{stuAnswer}
+		)
+	</insert>
+
+	<!-- 학부모 -->
+	<resultMap type="Parents" id="parentsResult">
+		<result column="PR_ID" property="prId" />
+		<result column="PR_PWD" property="prPwd" />
+		<result column="PR_NAME" property="prName" />
+		<result column="PHONE" property="phone" />
+		<result column="NICKNAME" property="nickname" />
+		<result column="PR_QUESTION" property="prQuestion" />
+		<result column="PR_ANSWER" property="prAnswer" />
+	</resultMap>
+
+	<!-- 학부모 로그인 -->
+	<select id="loginParents" parameterType="Parents"
+		resultMap="parentsResult">
+		SELECT PR_ID,
+		PR_PWD,
+		PR_NAME,
+		PHONE,
+		NICKNAME,
+		PR_QUESTION,
+		PR_ANSWER
+		FROM PARENTS
+		WHERE PR_ID = #{prId}
+		AND PR_PWD = #{prPwd}
+	</select>
+
+	<!-- 학부모 회원가입 -->
+	<insert id="insertParents">
+		INSERT INTO
+		PARENTS(PR_ID,PR_PWD,PR_NAME,PHONE,NICKNAME,PR_QUESTION,PR_ANSWER)
+		VALUES(#{prId},#{prPwd},#{prName},#{phone},#{nickname},#{prQuestion},#{prAnswer})
+	</insert>
+
+	<!-- 학부모 회원가입시 학생아이디 가져오기 -->
+	<select id="selectStudentList" parameterType="Student"
+		resultMap="studentResultSet">
+		SELECT STU_ID,
+		STU_NAME,
+		STU_NUM,
+		CLASS_CODE
+		FROM STUDENT
+		WHERE STU_NAME = #{stuName}
+		AND PHONE = #{phone}
+
+	</select>
+
+	<!-- 선생님 -->
+	<resultMap type="Teacher" id="TeacherResultSet">
+		<result column="TC_ID" property="tcId" />
+		<result column="CLASS_CODE" property="classCode" />
+		<result column="TC_PWD" property="tcPwd" />
+		<result column="SC_CODE" property="scCode" />
+		<result column="TC_NAME" property="tcName" />
+		<result column="PHONE" property="phone" />
+		<result column="STATUS" property="status" />
+		<result column="TC_QUESTION" property="tcQuestion" />
+		<result column="TC_ANSWER" property="tcAnswer" />
+	</resultMap>
+
+	<!-- 선생님 로그인 -->
+	<select id="loginTeacher" parameterType="Teacher"
+		resultMap="TeacherResultSet">
+		SELECT TC_ID,
+		CLASS_CODE,
+		TC_PWD,
+		SC_CODE,
+		TC_NAME,
+		PHONE,
+		STATUS,
+		TC_QUESTION,
+		TC_ANSWER
+		FROM TEACHER
+		WHERE TC_ID = #{tcId}
+		AND
+		TC_PWD = #{tcPwd}
+	</select>
+
+	<!-- 선생님 회원가입 -->
+	<insert id="insertTeacher">
+		INSERT INTO TEACHER(
+		TC_ID,
+		TC_PWD,
+		SC_CODE,
+		TC_NAME,
+		PHONE,
+		TC_QUESTION,
+		TC_ANSWER
+		) VALUES(
+		#{tcId},
+		#{tcPwd},
+		#{scCode},
+		#{tcName},
+		#{phone},
+		#{tcQuestion},
+		#{tcAnswer}
+		)
+	</insert>
+
+	<!-- 아이디 중복 체크(통합) -->
+	<select id="idCheck" resultType="_int">
+		SELECT COUNT(*)
+		FROM (
+		SELECT
+		STU_ID FROM STUDENT WHERE STU_ID = #{checkId}
+		UNION ALL
+		SELECT PR_ID
+		FROM PARENTS WHERE PR_ID = #{checkId}
+		UNION ALL
+		SELECT TC_ID FROM
+		TEACHER WHERE TC_ID = #{checkId}
+		)
+	</select>
+</mapper>
