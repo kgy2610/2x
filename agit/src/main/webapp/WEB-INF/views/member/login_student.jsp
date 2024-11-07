@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<c:url value='/resources/css/login.css'/>">
     <link rel="stylesheet" href="<c:url value='/resources/css/login_detail.css'/>">
 </head>
+
 <body>
     <div id="login-box">
         <div id="login-logo" onclick="redirectToLogin()" style="cursor: pointer;">
@@ -20,22 +21,22 @@
         </div>
     </div>
     <div id="login-form">
-        <form>
+        <form action="login.student" method="post">
             <div id="login-id">
                 <p>아이디</p>
-                <input type="text" placeholder="아이디를 입력하세요." autofocus>
+                <input type="text" placeholder="아이디를 입력하세요." autofocus id="stuId" name="stuId" required>
             </div>
             <div id="login-pwd">
                 <p>비밀번호</p>
-                <input type="password" placeholder="비밀번호를 입력하세요." autofocus>
+                <input type="password" placeholder="비밀번호를 입력하세요." autofocus id="stuPwd" name="stuPwd" required>
             </div>
             <div id="login-btn">
-                <input type="button" value="로그인">
+                <input type="submit" value="로그인">
             </div>
         </form>
 
         <div id="join-find">
-            <p><a href="enrollForm.student">회원가입</a></p>
+            <p><a href="enrollForm.stu">회원가입</a></p>
             <p> | </p>
             <p><a href="find.id-pwd">아이디/비밀번호 찾기</a></p>
         </div>
@@ -43,7 +44,7 @@
     
     <script>
         function redirectToLogin() {
-            window.location.href = '<c:url value="/login"/>'; // login 컨트롤러로 이동
+            window.location.href = '<c:url value="/login"/>';
         }
     </script>
 </body>

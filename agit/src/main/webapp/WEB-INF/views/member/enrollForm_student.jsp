@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGIT</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/enrollForm.css'/>">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div id="enrollForm-box">
@@ -19,31 +20,31 @@
         </div>
 
         <div id="enrollForm-form">
-            <form action="">
+            <form action="enrollForm.student" method="post">
                 <div id="enroll-name">
                     <p>이름</p>
-                    <input type="text" placeholder="이름을 입력하세요." autofocus>
+                    <input type="text" placeholder="이름을 입력하세요." autofocus id="stuName" name="stuName" required>
                 </div>
                 <div id="enroll-id">
                     <p>아이디</p>
-                    <input type="text" placeholder="아이디를 입력하세요." autofocus>
-                    <input type="button" value="중복확인">
+                    <input type="text" placeholder="아이디를 입력하세요." autofocus id="stuId" name="stuId" required>
+                    <input type="button" value="중복확인" id="checkBtn">
                 </div>
                 <div id="enroll-pwd">
                     <p id="enroll-pwd-p">비밀번호</p>
-                    <input type="text" placeholder="비밀번호를 입력하세요." autofocus>
+                    <input type="text" placeholder="비밀번호를 입력하세요." autofocus id="stuPwd" name="stuPwd" required>
                 </div>
                 <div id="enroll-pwd">
                     <p>비밀번호 확인</p>
-                    <input type="text" placeholder="이름을 입력하세요." autofocus>
+                    <input type="text" placeholder="작성한 비밀번호를 입력하세요." autofocus id="stuPwdCheck" name="stuPwdCheck" required >
                 </div>
                 <div id="enroll-phone">
                     <p>전화번호</p>
-                    <input type="text" placeholder="(-)제외하고 입력 ex)01011112222" autofocus>
+                    <input type="text" placeholder="(-)제외하고 입력 ex)01011112222" autofocus id="phone" name="phone" required>
                 </div>
                 <div id="enroll-Q">
                     <p>본인 확인 질문</p>
-                    <select>
+                    <select name="stuQuestion">
                         <option value="subject">내가 가장 좋아하는 과목은?</option>
                         <option value="area">내가 태어난 도시는?</option>
                         <option value="travel">가장 기억에 남는 여행 장소는?</option>
@@ -53,10 +54,10 @@
                 </div>
                 <div id="enroll-A">
                     <p>답변</p>
-                    <input type="text" placeholder="비밀번호 찾기에 사용됩니다. 잘 기억해주세요!">
+                    <input type="text" placeholder="비밀번호 찾기에 사용됩니다. 잘 기억해주세요!" id="stuAnswer" name="stuAnswer" required>
                 </div>
                 <div id="enroll-btn">
-                    <input type="button" value="회원가입">
+                    <input type="submit" value="회원가입" onclick="return handleSubmit()" id="submitButton">
                 </div>
             </form>
         </div>
@@ -67,5 +68,7 @@
             window.location.href = '<c:url value="/login"/>'; // login 컨트롤러로 이동
         }
     </script>
+    <script src="<c:url value='/resources/js/form_student.js'/>"></script>
+    
 </body>
 </html>

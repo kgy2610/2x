@@ -231,7 +231,7 @@
     width: 400px; height: 120px;
     margin: 0 auto;
 }
-#enroll-btn > input[type="button"]{
+#enroll-btn > input[type="submit"]{
     width: 400px; height: 60px;
     background-color: #A98467;
     color: #fff;
@@ -243,7 +243,7 @@
     margin-top: 20px;
     cursor: pointer;
 }
-#enroll-btn > input[type="button"]:hover{
+#enroll-btn > input[type="submit"]:hover{
     background-color: #F4DABF;
     color: #A98467;
 }
