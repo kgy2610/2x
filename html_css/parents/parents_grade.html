@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parents_grade</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
+    <link rel="stylesheet" href="./css/menubar.css">
+    <link rel="stylesheet" href="./css/parents_grade.css">
+</head>
+<body>
+    <div class="nav">
+        <img src="./img/logo.png">
+        <div class="menu">
+            <label for="mypage"><a href="#">마이페이지</a></label>
+            <label for="score"><a href="#">성적</a></label>
+            <label for="advice"><a href="#">상담신청</a></label>
+            <label for="community"><a href="#">커뮤니티</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info"><a href="#">정보수정</a></label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+    <div id="gradeTitle"><h1>00이의 성적!</h1></div>
+    <div id="content_border">
+        <div class="graphBox">
+            <canvas id="barCanvas" width="900px" height="270px"></canvas>  
+        </div>
+        <table id="grade_table">
+            <thead>
+                <tr>
+                    <th>과목</th>
+                    <th>제목</th>
+                    <th>점수</th>
+                    <th>과목평균</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>국어</td>
+                    <td>국어 단원평가</td>
+                    <td><p>93</p></td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td >수학</td>
+                    <td>수학 단원평가</td>
+                    <td><p>75</p></td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>영어</td>
+                    <td>영어 단원평가</td>
+                    <td><p>85</p></td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>과학</td>
+                    <td>과학 단원평가</td>
+                    <td><p>76</p></td>
+                    <td>55</td>
+                </tr>
+                <tr>
+                    <td>사회</td>
+                    <td>사회 단원평가</td>
+                    <td><p>40</p></td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>미술</td>
+                    <td>미술 단원평가</td>
+                    <td><p>80</p></td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td>체육</td>
+                    <td>체육 단원평가</td>
+                    <td><p>100</p></td>
+                    <td>95</td>
+                </tr>
+    
+            </tbody>
+                        
+        </table>
+    </div>
+    <script>
+        const ctx = document.getElementById('barCanvas').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',  // 기본 유형을 막대그래프로 설정
+            data: {
+                labels: ["국어", "수학", "영어", "과학", "사회", "미술", "체육"],
+                datasets: [
+                    {
+                        label: '자녀 점수',
+                        data: [30, 50, 40, 60, 70, 90, 100],
+                        backgroundColor: '#FAEDCD',
+                        borderColor: '#FAEDCD',
+                        borderWidth: 1,
+                        order: 2
+                    },
+                    {
+                        label: '전체 평균 점수',
+                        data: [20, 45, 35, 55, 65, 85, 95],
+                        type: 'line',  // 이 데이터셋을 꺾은선 그래프로 설정
+                        borderColor: '#A98467',
+                        borderWidth: 2,
+                        fill: false,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'right'  // 범례를 오른쪽에 배치
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 18 // 하단 labels의 글꼴 크기를 16px로 설정   
+                            },
+                            color: '#A98467'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

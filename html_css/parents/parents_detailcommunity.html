@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>parents_detailcommunity</title>
+    <link rel="stylesheet" href="./css/menubar.css">
+    <link rel="stylesheet" href="./css/parents_detailcommunity.css">
+</head>
+<body>
+    <div class="nav">
+        <img src="./img/logo.png">
+        <div class="menu">
+            <label for="mypage"><a href="#">마이페이지</a></label>
+            <label for="score"><a href="#">성적</a></label>
+            <label for="advice"><a href="#">상담신청</a></label>
+            <label for="community"><a href="#">커뮤니티</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info"><a href="#">정보수정</a></label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+    
+    <div id="content_border">
+        <div id="enroll_title">김용담 선생님이 저희 애를 ㅠㅠ</div>
+        <div id="enroll_content" >
+            <div id="enroll_info">작성자 석현맘 | 조회수 24 | 2024-10-23</div>
+            <div id="en_content">여기 스타일 어떻게 해야될지 생각이 안나네 </div>
+            <div id="enroll_file">
+                <input type="file" id="fileInput" style="display: none;" onchange="showFileName()">
+                <label for="fileInput" class="custom-file-upload">
+                    파일 선택
+                </label>
+                <span id="fileName" class="file-name">선택된 파일이 없습니다</span>
+            </div>
+        </div>
+        <div id="reply_area">
+            <table class="parents_reply" >
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+            <table class="parents_reply child_reply">
+                <tr>
+                    <td><div></div></td>
+                    <td>석현맘</td>
+                    <td><div>@석현맘 댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글</div></td>
+                    <td><div><button>수정</button></div></td>
+                    <td><div><button>삭제</button></div></td>
+                    <td><img src="img/vector.png" id="vector"></td>
+                </tr>
+            </table>
+        </div>
+        <table class="parents_reply" id="enroll_reply">
+            <tr>
+                <td><div></div></td>
+                <td>석현맘</td>
+                <td><div><input type="text" placeholder="댓글을 입력하세요" id="en_reply"></div></td>
+                <td><div></div></td>
+                <td><div><button>등록</button></div></td>
+                <td></td>
+            </tr>
+        </table>
+        <button class="create_button">목록으로</button>
+        <button class="create_button" id="modify_button">수정하기</button>
+    </div>
+    <script>
+        document.querySelectorAll(".text-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 3) {
+                element.innerText = text.substring(0, 3) + "...";
+            }
+        });
+
+        document.querySelectorAll(".title-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 15) {
+                element.innerText = text.substring(0, 12) + "...";
+            }
+        });
+
+        function showFileName() {
+            const fileInput = document.getElementById("fileInput");
+            const fileName = document.getElementById("fileName");
+
+            if (fileInput.files.length > 0) {
+                fileName.textContent = fileInput.files[0].name;
+            } else {
+                fileName.textContent = "선택된 파일이 없습니다";
+            }
+        }
+        const enTitleInput = document.getElementById("en_reply");
+
+        // 포커스가 되었을 때 placeholder 숨기기
+        enTitleInput.addEventListener("focus", function() {
+            enTitleInput.setAttribute("data-placeholder", enTitleInput.getAttribute("placeholder"));
+            enTitleInput.setAttribute("placeholder", "");
+        });
+
+        // 포커스가 해제되었을 때 원래 placeholder 복원
+        enTitleInput.addEventListener("blur", function() {
+            enTitleInput.setAttribute("placeholder", enTitleInput.getAttribute("data-placeholder"));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parents_Allcommunity</title>
+    <link rel="stylesheet" href="./css/menubar.css">
+    <link rel="stylesheet" href="./css/parents_Allcommunity.css">
+    <script src="./js/textLimit.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <img src="./img/logo.png">
+        <div class="menu">
+            <label for="mypage"><a href="#">마이페이지</a></label>
+            <label for="score"><a href="#">성적</a></label>
+            <label for="advice"><a href="#">상담신청</a></label>
+            <label for="community"><a href="#">커뮤니티</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info"><a href="#">정보수정</a></label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+    <div id="content_border">
+        <div id="community_title"><h1>커뮤니티</h1></div>
+        <button id="create_button">글 작성하기</button>
+        <table id="community_table">
+            <thead>
+                <tr>
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th>작성자</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p>석현맘</p></td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘sdfawefawefawef</p></td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘</p></td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘</p></td>
+                    <td>55</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘</p></td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘</p></td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘</p></td>
+                    <td>95</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘</p></td>
+                    <td>95</td>
+                </tr>
+                <tr>
+                    <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                    <td>2024-10-21</td>
+                    <td><p class="text-limit">석현맘asdfawefawef</p></td>
+                    <td>95</td>
+                </tr>
+    
+            </tbody>
+                        
+        </table>
+        <br><br>
+        <div id="arrow_button">
+            <button id="left_arrow"></button>
+            <button style="background-color: #DDE5B6; border-radius: 40px;">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button id="right_arrow"></button>
+        </div>
+    </div>
+    <script>
+                document.querySelectorAll(".text-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 3) {
+                element.innerText = text.substring(0, 3) + "...";
+            }
+        });
+        document.querySelectorAll(".title-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 15) {
+                element.innerText = text.substring(0, 12) + "...";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parents_Maincommunity</title>
+    <link rel="stylesheet" href="./css/menubar.css">
+    <link rel="stylesheet" href="./css/parents_Maincommunity.css">
+</head>
+<body>
+    <div class="nav">
+        <img src="./img/logo.png">
+        <div class="menu">
+            <label for="mypage"><a href="#">마이페이지</a></label>
+            <label for="score"><a href="#">성적</a></label>
+            <label for="advice"><a href="#">상담신청</a></label>
+            <label for="community"><a href="#">커뮤니티</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info"><a href="#">정보수정</a></label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+    <div id="content_border">
+        <div id="community_title"><h1>커뮤니티 인기글</h1></div>
+        <div class="best_content">
+            <table>
+                <tr>
+                    <th colspan="2" class="best_title-limit">제목제목제목제목제목sadfawef제목</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div class="best_content_pic" style="background-image: url(img/test1.png); background-repeat : no-repeat; "></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="icon"><div><img src="img/eye.png" alt="조회수" ><span>300</span></div></td>
+                    <td class="icon"><div><img src="img/comment.png" alt="조회수"><span>300</span></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="best_content" id="bt_content2">
+            <table>
+                <tr>
+                    <th colspan="2" class="best_title-limit">제목제목제목제목제목sadfawef제목</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div class="best_content_pic"></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="icon"><div><img src="img/eye.png" alt="조회수" ><span>300</span></div></td>
+                    <td class="icon"><div><img src="img/comment.png" alt="조회수"><span>300</span></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="best_content" id="bt_content3">
+            <table>
+                <tr>
+                    <th colspan="2" class="best_title-limit">제목제목제목제목제목sadfawef제목</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div class="best_content_pic"></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="icon"><div><img src="img/eye.png" alt="조회수" ><span>300</span></div></td>
+                    <td class="icon"><div><img src="img/comment.png" alt="조회수"><span>300</span></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="best_content" id="bt_content4">
+            <table>
+                <tr>
+                    <th colspan="2" class="best_title-limit">제목제목제목제목제목sadfawef제목</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><div class="best_content_pic"></div></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="icon"><div><img src="img/eye.png" alt="조회수" ><span>300</span></div></td>
+                    <td class="icon"><div><img src="img/comment.png" alt="조회수"><span>300</span></div></td>
+                </tr>
+            </table>
+        </div>
+        <div id="community_table_border">
+            <a href="#">전체보기</a>
+            <table id="community_table">
+                <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>작성일</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                        <td>2024-10-21</td>
+                        <td><p class="text-limit">석현맘</p></td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                        <td>2024-10-21</td>
+                        <td><p class="text-limit">석현맘</p></td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                        <td>2024-10-21</td>
+                        <td><p class="text-limit">석현맘</p></td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td class="title-limit">김용담 선생님이 저희 애를 ㅠㅠ</td>
+                        <td>2024-10-21</td>
+                        <td><p class="text-limit">석현asdfawef맘</p></td>
+                        <td>55</td>
+                    </tr>
+        
+                </tbody>
+                            
+            </table>
+        </div>
+        <button id="create_button">글 작성하기</button>  
+    </div>
+    <script>
+        document.querySelectorAll(".text-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 3) {
+                element.innerText = text.substring(0, 3) + "...";
+            }
+        });
+        document.querySelectorAll(".title-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 18) {
+                element.innerText = text.substring(0, 15) + "...";
+            }
+        });
+        document.querySelectorAll(".best_title-limit").forEach(function (element) {
+            const text = element.innerText;
+            if (text.length > 12) {
+                element.innerText = text.substring(0, 11) + "...";
+            }
+        });
+    </script>
+</body>
+</html>

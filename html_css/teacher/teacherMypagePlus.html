@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교직원 반 개설 후</title>
+    <link rel="stylesheet" href="./css/teacherMypagePlus.css">
+</head>
+<body>
+    <div class="nav">
+        <img src="../common/img/logo.png">
+        <div class="menu">
+            <label for="mypage" id="mypage"><a href="#">마이페이지</a></label>
+            <label for="homework"><a href="#">숙제</a></label>
+            <label for="attendance"><a href="#">출결</a></label>
+            <label for="community"><a href="#">방과후 반</a></label>
+            <label for="advicePlan"><a href="#">상담일정</a></label>
+            <label for="photo"><a href="#">행사사진</a></label>
+            <label for="studentManage"><a href="#">학생관리</a></label>
+        </div>
+        <div class="undermenu">
+            <label for="info">
+                <a href="#" onclick="openInfoModal()">정보수정</a>
+            </label>
+            <label for="logout"><a href="#">로그아웃</a></label>
+        </div>
+    </div>
+
+    <div class="whole_body">
+        <h1>1학년 매화반(7031110241매화)</h1>
+
+            <div class="textbox1">
+                <div class="text1">
+                    <span class="date">10.21(10시)</span> 누구 어머니 상담
+                </div>
+                <hr class="body_line">
+                <div class="text1">
+                    <span class="date">10.21(10시)</span> 누구 어머니 상담
+                </div>
+            </div> 
+
+            <div class="textbox2">
+                <h1>공지사항</h1>
+                <hr class="body_line">
+                <div class="bottom_container">
+                    <div class="body_content">
+                        <div class="body_title" onclick="openDeleteNoticeModal()">오늘 학교 끝나고 보강있...</div>
+                        <div class="body_writer">2024-10-20</div>
+                    </div>
+                    <hr class="body_line">
+                    <div class="body_content">
+                        <div class="body_title">오늘 학교 끝나고 보강있...</div>
+                        <div class="body_writer">2024-10-20</div>
+                    </div>
+                    <hr class="body_line">
+                    <div class="body_content">
+                        <div class="body_title">오늘 학교 끝나고 보강있...</div>
+                        <div class="body_writer">2024-10-20</div>
+                    </div>
+                    <hr class="body_line">
+                    <div class="body_content">
+                        <div class="body_title">오늘 학교 끝나고 보강있...</div>
+                        <div class="body_writer">2024-10-20</div>
+                    </div>
+                    <hr class="body_line">
+                </div>
+
+                <!-- 이미지 클릭 시 공지사항 작성 모달 열기 -->
+                <img src="./img/plus.JPG" class="body_plus" onclick="openAddNoticeModal()">
+            </div> 
+
+
+
+            <div class="memo_content">
+                <h1>메모장</h1>
+                <div class="memo_box">
+                    <div class="memo_text">241021국어 숙제</div>
+                    <button>x</button>
+                </div>
+                <div class="memo_box">
+                    <div class="memo_text" onclick="openModifyMemoModal()">241021국어 숙제</div>
+                    <button>x</button>
+                </div>
+                <div class="memo_box">
+                    <div class="memo_text">241021국어 숙제</div>
+                    <button>x</button>
+                </div>
+                <div class="memo_box">
+                    <div class="memo_text">241021국어 숙제</div>
+                    <button class="memo_button">x</button>
+                </div>
+                <div class="memo_box">
+                    <div class="memo_text"><input type="text" placeholder="메모 작성..."></div>
+                </div>
+
+                <img src="./img/plus2.JPG" class="memo_plus" onclick="openAddMemoModal()">
+            </div>
+
+
+
+            <!-- 모달 -->
+            <div id="noticeModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeInfoModal()">&times;</span>
+                    <h3>정보수정</h3>
+                    <form id="updateForm">
+                        <label for="code">코드</label>
+                        <input type="text" id="code" name="code" required><br><br>
+                        
+                        <div class="input-group">
+                        <label for="grade">학년</label>
+                        <input type="text" id="grade" name="grade" required><br><br>
+
+                        <label for="class">반</label>
+                        <input type="text" id="class" name="class" required><br><br>
+                        </div>
+                        <div class="button-group">
+                            <div class="top-buttons">
+                                <button class="update-button" type="button" onclick="updateInfo()">수정하기</button>
+                                <button class="password-button" type="button" onclick="openPasswordModal()">비밀번호 수정</button>
+                            </div>
+                            <button class="delete-button" type="button" onclick="openDeleteModal()">반 삭제</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- 반 삭제 확인 모달 -->
+            <div id="deleteClassModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeDeleteModal()">&times;</span>
+                    <h3>반 삭제</h3>
+                    <label for="deleteCode" class="deleteOn">정말로 반을 삭제하시겠습니까?</label>
+                    <div class="input-group">
+                        <p id="deleteClassMessage">코드: <input type="text" id="deleteCode" name="deleteCode" required></p>
+                    </div>
+                    <div class="button-group">
+                        <button class="confirm-delete-button" type="button" onclick="confirmDelete()">삭제하기</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 비밀번호 수정 모달 -->
+            <div id="passwordModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closePasswordModal()">&times;</span>
+                    <h3>비밀번호 수정</h3>
+                    <label for="currentPassword">현재 비밀번호</label>
+                    <input type="password" id="currentPassword" name="currentPassword" required>
+                    
+                    <label for="newPassword">수정 비밀번호</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                    
+                    <label for="confirmPassword">비밀번호 확인</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    
+                    <div class="button-group">
+                        <button class="confirm-password-button" type="button" onclick="confirmPasswordUpdate()">비밀번호 수정하기</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 공지사항 추가 모달 -->
+            <div id="addNoticeModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddNoticeModal()">&times;</span>
+                    <h3>공지사항을 작성하세요.</h3>
+                    <form id="addNoticeForm">
+                        <input type="text" id="noticeAddTitle" name="noticeTitle" class="announcementTextField" required>
+                        <button type="button" class="postAnnouncementButton" onclick="submitNotice()">등록</button>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- 공지사항 수정/삭제 모달 -->
+            <div id="deleteNoticeModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeDeleteNoticeModal()">&times;</span>
+                    <input type="text" id="noticeTitle" name="noticeTitle" required>
+                    <form id="deleteNoticeForm">
+                        <button type="button" class="confirm-button" onclick="confirmNoticeEdit()">수정</button>
+                        <button type="button" class="delete-button" onclick="confirmNoticeDelete()">삭제</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <!-- 메모 추가 모달 -->
+            <div id="addMemoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddMemoModal()">&times;</span>
+                    <h3>메모 작성</h3>
+                    <form id="addMemoForm">
+                        <input type="text" id="memoText" placeholder="메모 작성..." required>
+                        <button type="button" onclick="submitMemo()">등록</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <!-- 메모 수정 모달 -->
+            <div id="modifyMemoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModifyMemoModal()">&times;</span>
+                    <h3>메모 수정</h3>
+                    <form id="modifyMemoForm">
+                        <input type="text" id="modifyMemoText" placeholder="메모 내용을 수정하세요..." required>
+                        <button type="button" onclick="submitModifiedMemo()">저장</button>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+
+
+
+
+
+
+
+<script>
+    // 모달 열기
+    function openInfoModal() {
+        document.getElementById('noticeModal').style.display = 'block';
+    }
+
+    // 모달 닫기
+    function closeInfoModal() {
+        document.getElementById('noticeModal').style.display = 'none';
+    }
+
+    // 정보 수정하기
+    function updateInfo() {
+        const code = document.getElementById('code').value;
+        const grade = document.getElementById('grade').value;
+        const classValue = document.getElementById('class').value;
+
+        // 수정 기능 구현 로직 추가
+        alert(`정보 수정:\n코드: ${code}\n학년: ${grade}\n반: ${classValue}`);
+        closeInfoModal();
+    }
+
+    // 비밀번호 수정 모달 열기
+    function openPasswordModal() {
+        document.getElementById('passwordModal').style.display = 'block';
+    }
+
+    // 비밀번호 수정 모달 닫기
+    function closePasswordModal() {
+        document.getElementById('passwordModal').style.display = 'none';
+    }
+
+    // 비밀번호 수정 확인
+    function confirmPasswordUpdate() {
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // 비밀번호 수정 로직 추가
+        if (newPassword === confirmPassword) {
+            alert('비밀번호가 수정되었습니다.');
+            closePasswordModal();
+            closeInfoModal();
+        } else {
+            alert('비밀번호가 일치하지 않습니다.');
+        }
+    }
+
+    // 반 삭제 모달 열기
+    function openDeleteModal() {
+        document.getElementById('deleteClassModal').style.display = 'block';
+    }
+
+    // 반 삭제 모달 닫기
+    function closeDeleteModal() {
+        document.getElementById('deleteClassModal').style.display = 'none';
+    }
+
+    // 반 삭제 확인
+    function confirmDelete() {
+        const deleteCode = document.getElementById('deleteCode').value;
+
+        // 반 삭제 로직 추가
+        alert(`반 ${deleteCode}가 삭제되었습니다.`);
+        closeDeleteModal();
+        closeInfoModal();
+    }
+
+    // 공지사항 추가 모달 열기
+    function openAddNoticeModal() {
+        document.getElementById('addNoticeModal').style.display = 'block';
+    }
+
+    // 공지사항 추가 모달 닫기
+    function closeAddNoticeModal() {
+        document.getElementById('addNoticeModal').style.display = 'none';
+        clearNoticeForm();
+    }
+
+    // 공지사항 등록하기
+    function submitNotice() {
+        const noticeAddTitle = document.getElementById('noticeAddTitle').value;
+
+        // 공지사항 등록 로직 추가
+        alert(`공지사항 등록:\n제목: ${noticeAddTitle}`);
+        closeAddNoticeModal();
+    }
+
+    // 공지사항 입력 폼 초기화
+    function clearNoticeForm() {
+        document.getElementById('noticeAddTitle').value = '';
+    }
+
+    // 공지사항 수정/삭제 모달 열기
+    function openDeleteNoticeModal() {
+        document.getElementById("deleteNoticeModal").style.display = "block";
+    }
+
+    function closeDeleteNoticeModal() {
+        document.getElementById("deleteNoticeModal").style.display = "none";
+    }
+
+    function confirmNoticeEdit() {
+        const title = document.getElementById("noticeTitle").value;
+        alert(`공지사항이 수정되었습니다: ${title}`);
+        closeDeleteNoticeModal();
+    }
+
+    function confirmNoticeDelete() {
+        const title = document.getElementById("noticeTitle").value;
+        alert(`공지사항이 삭제되었습니다: ${title}`);
+        closeDeleteNoticeModal();
+    }
+
+
+    // 반 삭제 모달 열기
+    function openDeleteModal() {
+        document.getElementById('deleteClassModal').style.display = 'block';
+    }
+
+    function closeDeleteModal() {
+        document.getElementById('deleteClassModal').style.display = 'none';
+    }
+
+    function confirmClassDelete() {
+        const deleteCode = document.getElementById('deleteCode').value;
+        alert(`반 ${deleteCode}가 삭제되었습니다.`);
+        closeDeleteModal();
+        closeInfoModal();
+    }
+
+
+
+    // 메모 추가 모달 열기
+    function openAddMemoModal() {
+        document.getElementById('addMemoModal').style.display = 'block';
+    }
+
+    // 메모 추가 모달 닫기
+    function closeAddMemoModal() {
+        document.getElementById('addMemoModal').style.display = 'none';
+        clearMemoForm();
+    }
+
+    // 메모 추가 모달 입력 초기화
+    function clearMemoForm() {
+        document.getElementById('memoText').value = '';
+    }
+
+    // 메모 등록하기
+    function submitMemo() {
+        const memoText = document.getElementById('memoText').value;
+
+        // 메모 등록 로직 추가
+        alert(`메모 등록:\n내용: ${memoText}`);
+        closeAddMemoModal();
+    }
+
+
+
+    // 메모 수정 모달 열기
+    function openModifyMemoModal(memoContent) {
+        document.getElementById('modifyMemoModal').style.display = 'block';
+        document.getElementById('modifyMemoText').value = memoContent;
+    }
+
+    // 메모 수정 모달 닫기
+    function closeModifyMemoModal() {
+        document.getElementById('modifyMemoModal').style.display = 'none';
+    }
+
+    // 메모 수정 내용 저장
+    function submitModifiedMemo() {
+        const modifiedMemoText = document.getElementById('modifyMemoText').value;
+        
+        // 수정 로직 추가 (예: 기존 메모 데이터 업데이트)
+        alert(`메모 수정 완료:\n내용: ${modifiedMemoText}`);
+        closeModifyMemoModal();
+    }
+
+
+
+    // 페이지 클릭 시 모달 닫기
+    window.onclick = function(event) {
+        if (event.target.className === 'modal')
+        {
+            closeInfoModal();
+            closePasswordModal();
+            closeDeleteModal();
+            closeAddNoticeModal();
+        }   
+    }
+
+</script>
+</body>
+</html>
